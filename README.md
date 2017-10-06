@@ -1,6 +1,6 @@
-#PROYECTO FUERZA DE VENTAS
+# PROYECTO FUERZA DE VENTAS
 
-###Acerca del proyecto
+### Acerca del proyecto
 
 Proyecto desarrollado para la fuerza de ventas a nivel nacional de Claro, el cual permite registrar evaluaciones de posibles clientes para las evluaciones a fin de poder brindarles una linea telefonica. Las caracteristicas el proyecto:
 * Facil e intuitivo.
@@ -9,7 +9,7 @@ Proyecto desarrollado para la fuerza de ventas a nivel nacional de Claro, el cua
 * Modulo de actualizacion de informacion.
 * Desarga de reporteria.
 
-###Herramientas utilizadas para el desarrollo:
+### Herramientas utilizadas para el desarrollo:
 1. PHP
 2. Javascript
 3. Ajax
@@ -19,5 +19,5 @@ Proyecto desarrollado para la fuerza de ventas a nivel nacional de Claro, el cua
 7. Framework MVC
 8. Git
 
-###Contribuciones
+### Contribuciones
 Gracias por considerar contribuir en el proyecto! Solo es necesario saber algun framework MVC y en especial <? php echo "Hola Mundo"; ?>
