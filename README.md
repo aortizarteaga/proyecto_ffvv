@@ -10,6 +10,7 @@ Proyecto desarrollado para la fuerza de ventas a nivel nacional de Claro, el cua
 * Desarga de reporteria.
 
 ### Herramientas utilizadas para el desarrollo:
+
 1. PHP
 2. Javascript
 3. Ajax
@@ -20,4 +21,4 @@ Proyecto desarrollado para la fuerza de ventas a nivel nacional de Claro, el cua
 8. Git
 
 ### Contribuciones
-Gracias por considerar contribuir en el proyecto! Solo es necesario saber algun framework MVC y en especial <? php echo "Hola Mundo"; ?>
+Gracias por considerar contribuir en el proyecto! Solo es necesario saber algun framework MVC y en especial `<? php echo "Hola Mundo"; ?>`
