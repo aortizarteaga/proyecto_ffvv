@@ -10,6 +10,7 @@ Proyecto desarrollado para la fuerza de ventas a nivel nacional de Claro, el cua
 * Desarga de reporteria.
 
 ### Herramientas utilizadas para el desarrollo:
+
 1. PHP
 2. Javascript
 3. Ajax

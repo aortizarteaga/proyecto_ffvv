@@ -1,0 +1,76 @@
+<!-- SETTINGS TAB CONTENT -->
+									<div class="tab-pane settings" id="settings-tab">
+										<form class="form-horizontal" role="form">
+										<input style="display: none;" name="usuario" id="usuario" value="<?php echo $_SESSION['user'];?>">
+											<fieldset>
+												<h3><i class="fa fa-square"></i> Modificar Password</h3>
+												<div class="form-group">
+													<label for="old-password" class="col-sm-3 control-label">Antiguo Password</label>
+													<div class="col-sm-4">
+														<input type="password" id="old-password" name="old-password" class="form-control">
+													</div>
+												</div>
+												<hr />
+												<div class="form-group">
+													<label for="password" class="col-sm-3 control-label">Nuevo Password</label>
+													<div class="col-sm-4">
+														<input type="password" id="password" name="password" class="form-control">
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="password2" class="col-sm-3 control-label">Repetir Password</label>
+													<div class="col-sm-4">
+														<input type="password" id="password2" name="password2" class="form-control">
+													</div>
+												</div>
+											</fieldset>
+											<!-- <fieldset>
+												<h3><i class="fa fa-square"></i> Privacy</h3>
+												<label class="fancy-checkbox">
+													<input type="checkbox">
+													<span>Show my display name</span>
+												</label>
+												<label class="fancy-checkbox">
+													<input type="checkbox">
+													<span>Show my birth date</span>
+												</label>
+												<label class="fancy-checkbox">
+													<input type="checkbox">
+													<span>Show my email</span>
+												</label>
+												<label class="fancy-checkbox">
+													<input type="checkbox">
+													<span>Show my online status on chat</span>
+												</label>
+											</fieldset> -->
+										</form>
+										
+										<div class="row">
+											<div class="form-group col-sm-6">
+												<div class="col-sm-8 col-sm-offset-8">
+													<button type="button" class="btn btn-primary" id="btn_Actualizar">
+														<i class="fa fa-refresh"></i> Actualizar
+													</button>
+												</div>
+											</div>
+										</div>
+										
+										<div class="alert alert-danger alert-dismissable" style="display: none;" id="mensajes" name="mensajes" >
+										  <span id='mensaje'> </span>
+										</div>
+										
+									</div>
+<!-- END SETTINGS TAB CONTENT -->
+
+</div>
+<!-- /main -->
+</div>
+<!-- /content-wrapper -->
+</div>
+<!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- END BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT -->
+</div>
+<!-- /wrapper -->

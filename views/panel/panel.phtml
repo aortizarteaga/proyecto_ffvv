@@ -1,0 +1,480 @@
+<!-- main -->
+<div class="content">
+	<div class="main-content">	
+		<?php 
+		$tipo_usuario=$_SESSION['perfil'];
+		if($tipo_usuario=='SUPERVISOR' || $tipo_usuario=='ADMINISTRADOR'){
+			$display='block';
+		}
+		else{
+			$display='none';
+		}
+		?>
+		<input style="display: none;" name="tipo_usuario" id="tipo_usuario" value="<?php echo $tipo_usuario;?>">
+		<input style="display: none;" name="usuario_rea" id="usuario_rea" value="<?php echo $_SESSION['user'];?>">
+		<input style="display: none;" name="ip_rea" id="ip_rea" value="<?php echo $_SERVER['REMOTE_ADDR'];?>">
+		
+		<div style="display: <?php echo $display;?>;"  class="row">
+			<div class="col-md-8">
+				<!-- WIDGET TABLE -->
+				<div class="widget widget-table">
+					<div class="widget-header">
+						<h3>
+							<i class="fa fa-desktop"></i>Monitor de alertas
+						</h3>
+					</div>
+					<!-- 	<div class="widget-content"> -->
+					<div class="table-responsive" id='contenedor_tareas'>
+						<table class="table" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Tarea</th>
+									<th>Asist</th>
+									<th>Exp</th>
+									<th>Coord</th>
+									<th>Desc</th>
+									<th>Fecha</th>
+									<th>Tiempo</th>
+								</tr>
+							</thead>
+							<tbody id="tbl_tareas">
+							</tbody>
+						</table>
+					</div>
+					<!-- 	</div>  -->
+				</div>
+				<!-- END WIDGET TABLE -->
+			</div>
+
+			<div class="col-md-4">
+				<!-- WIDGET TABLE -->
+				<div class="widget widget-table">
+					<div class="widget-header">
+						<h3>
+							<i class="fa fa-desktop"></i>Monitor de seguimiento
+						</h3>
+					</div>
+					<div class="table-responsive" id='contenedor_pbx' >
+					<table class="table" cellspacing="0" id='tbl_monitorPbx'>
+							<thead>
+								<tr>
+									<th>Callerid</th>
+									<th>Piloto</th>
+									<th>Duracion</th>
+									<th>Extension</th>
+								</tr>
+							</thead>
+							<tbody id="tbl_pbx">
+							</tbody>
+							</table>
+					</div>
+				</div>
+				<!-- END WIDGET TABLE -->
+			</div>
+		</div>
+		<?php $tipo_usuario=$_SESSION['perfil'];
+			if($tipo_usuario=='VENDEDOR' || $tipo_usuario=='ADMINISTRADOR' ){$display0='block';}else{$display0='none';}
+		?>
+		
+		<!-- OPCIONES -->
+		<div class="widget widget-table" cellspacing="0">
+			<div class="widget-header">
+				<h3>
+					<i class="fa fa-search"></i> Consulta de Servicios
+				</h3>
+				<div style="display: <?php echo $display0;?>;" id="consulta_nueva" name="consulta_nueva" class="btn-group widget-header-toolbar">
+						<a id="consultas" style="cursor: pointer;display:inline;color: red; font-size:20px" title='Nueva Consulta' class='fa fa-folder-open-o'></a>
+				</div>
+			</div>
+			<div class="widget-content">
+			
+									 <div class="row">
+												<div class="form-group col-sm-6">
+													<label for="ticket-clave" class="col-sm-2 control-label">Busqueda</label>
+													<div class="col-sm-10">
+														<select class="form-control input-sm" name="criterio"  id="criterio" >
+															<option selected="selected">SELECCIONE</option>
+															<option value="0" >FECHA REGISTRO</option>
+															<option value="1" >NRO DOCUMENTO</option>
+															<option value="2" >TELEFONO REFERENCIA</option>
+															<option value="3" >SEC</option>
+															<option value="4" >IDENTIFICADOR</option>
+														</select>
+													</div>
+												</div>
+												
+												<div style="display: none;" id="fechas" class="form-group col-sm-6">
+													<!-- FILTRO DE FECHA -->
+																<div class="form-group col-sm-6">
+																	<label for="ticket-clave" class="col-sm-4 control-label">Fecha Inicio:</label>
+																	<div class="col-sm-8">
+																	<input type="text" class="form-control input-sm" id="fechaini" name="fechaini"
+																		placeholder="Fecha Inicio">
+																	</div>
+																</div>
+																
+																<div class="form-group col-sm-6">
+																	<label for="ticket-clave" class="col-sm-4 control-label">Fecha Fin:</label>
+																	<div class="col-sm-8">
+																	<input type="text" class="form-control input-sm" id="fechafin" name="fechafin"
+																		placeholder="Fecha Fin">
+																	</div>
+															</div>
+														<!-- FIN FILTRO DE FECHA -->
+												</div>
+										</div>
+										
+										<div class="row">
+											<div style="display: none;" id="criterio_busqueda" class="form-group col-sm-6">
+												<label for="ticket-clave" class="col-sm-2 control-label"></label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control input-sm" id="criterios" name="criterios" placeholder="Ingrese Criterio">
+												</div>
+											</div>	
+										</div>
+										
+										<div class="row">
+											<div style="display: none;" id="boton_busqueda" class="form-group col-sm-6">
+												<label for="ticket-clave" class="col-sm-2 control-label"></label>
+												<div class="col-sm-10 col-sm-offset-10">
+													<button type="button" id="btn_buscar" class="btn btn-primary">
+														<i class="fa fa-check-circle"></i> Buscar
+													</button>
+												</div>
+											</div>	
+										</div>
+			</div>
+		</div>
+		<!-- FIN OPCIONES -->
+
+		<!-- WIDGET TICKET TABLE -->
+		<div class="widget widget-table">
+			<div class="widget-header">
+				<h3>
+					<i class="fa fa-cogs"></i> Registro de Consultas
+				</h3>
+			</div>
+			
+							<div class="widget-content">
+								<table style="width: 100%" width="100%" id="listado_servicios" name="listado_servicios" class="table table-sorting table-hover  table-bordered datatable">
+									<thead>
+										<tr>
+											<th width="15%">Identificador</th>
+											<th width="9%">Tipo Operacion</th>
+											<th width="5%">Modalidad</th>
+											<th width="5%">ID Tipo Operacion</th>
+											<th width="9%">ID Modalidad</th>
+											<th width="25%">Nro Documento Vendedor</th>
+											<th width="25%">Vendedor</th>
+											<th width="25%">Nombres</th>
+											<th width="9%">Tipo Documento</th>
+											<th style="display: none;">ID Documento</th>
+											<th style="display: none;">precio</th>
+											<th style="display: none;">sec</th>
+											<th style="display: none;">fecha sec</th>
+											<th width="7%">Nro Documento</th>
+											<th style="display: none;">Fecha Nacimiento</th>
+											<th width="7%">Nro Referencia</th>
+											<th width="7%">Estado</th>
+											<th width="5%">Motivo</th>
+											<th width="15%">Opciones</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>	
+							</div>	
+			
+			
+		</div>
+		<!-- END WIDGET TICKET TABLE -->
+	</div>
+	
+	
+	<!-- MODAL INFORMATION UPDATE -->
+	<div class="widget-content">
+
+		<div class="modal fade" id="updatedata" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" data-size="modal-lg">
+				<div class="modal-content">
+					<form method="post" id="formu" name="formu">
+						<!-- HEADER -->
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" title="Cerrar" aria-hidden="true">&times;</button>
+							<h5 style="color: red;" class="modal-title" id="myModalLabel"></h5>
+						</div>
+						<!-- END HEADER -->
+
+						<!-- BODY -->
+						<div class="modal-body">
+							<div class="widget">
+								<div class="widget-header">
+									<h3>
+										<i class="fa fa-edit"></i> Datos Consulta
+									</h3>
+									<div style="display: none;" id="pdf_subido" name="pdf_subido" class="btn-group widget-header-toolbar">
+										<a id="pdf_ver" name="pdf_ver" style="color: red;display: none;cursor: pointer;" target="_blank"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a>
+									</div>
+								</div>
+
+								<div class="widget-content">
+									<input style="display: none;" type="text" class="form-control input-sm" id="id_consulta" name="id_consulta">
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label for="ticket-materno" class="col-sm-4 control-label"><strong>TIPO OPERACION</strong></label>
+											<div class="col-sm-8">
+												<label for="ticket-nombres" class="col-sm-3 control-label" id="operacion" name="operacion"></label>
+											</div>
+										</div>	
+										
+										<div class="form-group col-sm-6">
+											<label for="ticket-materno" class="col-sm-5 control-label"><strong>MODALIDAD VENTA</strong></label>
+											<div class="col-sm-7">
+												<label for="ticket-nombres" class="col-sm-3 control-label" id="modalidad" name="modalidad"></label>
+											</div>
+										</div>		
+									</div>
+									
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label for="ticket-nombres" class="col-sm-4 control-label">Nombres</label>
+											<div class="col-sm-8">
+												<label for="ticket-nombres" class="col-sm-12 control-label" id="nombres" name="nombres"></label>
+											</div>
+										</div>	
+										
+										<div class="form-group col-sm-6">
+											<label for="ticket-materno" class="col-sm-4 control-label">Fecha Nacimiento</label>
+											<div class="col-sm-8">
+											 	<input id="nacimiento" name="nacimiento" class="form-control col-sm-4 input-sm" type="text" placeholder="Fecha Nacimiento">
+											</div>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label for="ticket-paterno" class="col-sm-4 control-label">Tipo Doc</label>
+											<div class="col-sm-8">
+												<select class="form-control input-sm" name="tipo_documento" id="tipo_documento">
+													<option value="">SELECCIONE</option>
+													<?php foreach($this->tipo_documento  as $indice =>$value):?>						
+													<option value="<?php echo $value[0] ?>"><?php echo $value[1] ?></option>
+													<?php  endforeach;?>
+												</select>
+											</div>
+										</div>
+										
+										<div class="form-group col-sm-6">
+											<label for="ticket-materno" class="col-sm-4 control-label">Nro doc</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control input-sm" id="nro_doc" name="nro_doc" placeholder="Nro Documento">
+											</div>
+										</div>	
+									</div>
+									
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label for="ticket-materno" class="col-sm-4 control-label">Nro Referencia</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control input-sm" id="referencia" name="referencia" placeholder="Nro Referencia">
+											</div>
+										</div>	
+										<div class="form-group col-sm-6">
+											<label for="ticket-materno" class="col-sm-4 control-label">Precio</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control input-sm" id="precio" name="precio" placeholder="Precio">
+											</div>
+										</div>	
+									</div>
+									
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label for="ticket-materno" class="col-sm-4 control-label">SEC</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control input-sm" id="sec" name="sec" placeholder="SEC">
+											</div>
+										</div>	
+										<div class="form-group col-sm-6">
+											<label for="ticket-materno" class="col-sm-4 control-label">Fecha SEC</label>
+											<div class="col-sm-8">
+												<input id="fecha_sec" name="fecha_sec" class="form-control col-sm-4 input-sm" type="text" placeholder="Fecha SEC">
+											</div>
+										</div>	
+									</div>
+									
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label id="lbl_observaciones_iniciales" for="ticket-observaciones" class="col-sm-4 control-label">Observaciones Vendedor</label>
+											<div class="col-sm-8">
+												<textarea readonly="readonly" class="form-control" placeholder="observaciones" rows="4" id="observaciones_iniciales" name="observaciones_iniciales"></textarea>
+											</div>
+										</div>
+									 	<div class="form-group col-sm-6">
+											<label style="display: none;" id="lbl_observaciones" for="ticket-observaciones" class="col-sm-4 control-label">Observaciones Asesor</label>
+											<div class="col-sm-8">
+												<textarea style="display: none;" class="form-control" placeholder="observaciones" rows="4" id="observaciones" name="observaciones"></textarea>
+											</div>
+										</div>	
+									</div>
+			
+									<div class="widget-content">
+										<table width="100%" id="listado_planes" name="listado_planes" class="table table-striped table-hover  table-bordered datatable">
+											<thead>
+												<tr>
+													<th width="9%">Campaña</th>
+													<th width="9%">Plazo</th>
+													<th width="12%">Familia</th>
+													<th width="7%">Plan</th>
+													<th width="7%">Equipo</th>
+													<th width="7%">Tope</th>
+													<th width="2%">Cuotas</th>
+													<th width="7%">Telefono</th>
+													<th width="7%">Modalidad</th>
+													<th width="7%">Op.Cedente</th>
+													<th width="2%">Opciones</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>	
+									</div>	
+								</div>
+							</div>
+							<div class="alert alert-danger alert-dismissable" style="display: none;" id="mensaje_actualizacion" name="mensaje_actualizacion" >
+						  			<span id='mensaje_actualizacion'> </span>
+							</div>
+						</div>
+						<!-- END BODY -->
+
+						<!-- FOOTER -->
+						<div class="modal-footer">
+							<button type="button" id="btn_actualizar"
+								class="btn btn-danger">
+								<i class="fa fa-check-circle"></i> Actualizar
+							</button>
+						</div>
+						<!-- END FOOTER -->
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- END MODAL INFORMATION UPDATE -->
+	
+	<!-- MODAL ADD BITACORA -->
+	<div class="widget-content">
+
+		<div class="modal fade" id="addbitacora" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" data-size="modal-lg">
+				<div class="modal-content">
+					<form method="post" id="formu_bita" name="formu_bita">
+						<!-- HEADER -->
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" title="Cerrar" aria-hidden="true">&times;</button>
+							<h5 style="color: red;" class="modal-title" id="label_bita"></h5>
+						</div>
+						<!-- END HEADER -->
+
+						<!-- BODY -->
+						<div class="modal-body">
+							<div class="widget">
+								<div class="widget-header">
+									<h3>
+										<i class="fa fa-edit"></i> Asignacion de servicio
+									</h3>
+								</div>
+
+								<div class="widget-content">
+									<input style="display: none;" type="text" class="form-control input-sm" id="id_consulta_2" name="id_consulta_2">
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label for="ticket-paterno" class="col-sm-4 control-label">Estado Consulta</label>
+											<div class="col-sm-8">
+												<select class="form-control input-sm" name="estado_consulta" id="estado_consulta">
+													<option value="">SELECCIONE</option>
+													<?php foreach($this->estado_consulta  as $indice =>$value):?>						
+													<option value="<?php echo $value[0] ?>"><?php echo $value[1] ?></option>
+													<?php  endforeach;?>
+												</select>
+											</div>
+										</div>	
+										
+										<div class="form-group col-sm-6">
+											<label for="ticket-paterno" class="col-sm-4 control-label">Motivo Consulta</label>
+											<div class="col-sm-8">
+												<select class="form-control input-sm" name="motivo_consulta" id="motivo_consulta">
+													<option value="">SELECCIONE</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label for="ticket-materno" class="col-sm-4 control-label">Observaciones</label>
+											<div class="col-sm-8">
+												<textarea class="form-control" placeholder="Observaciones"
+												rows="3" id="observaciones" name="observaciones"></textarea>
+											</div>
+										</div>	
+									</div>
+			
+									<div class="widget-content">
+										<table width="100%" id="listado_bitacora" name="listado_bitacora" class="table table-striped table-hover  table-bordered datatable">
+											<thead>
+												<tr>
+													<th width="15%">Nro Movimiento</th>
+													<th width="15%">Fecha Registro</th>
+													<th width="15%">Usuario</th>
+													<th width="15%">Estado</th>
+													<th width="15%">Motivo</th>
+													<th width="15%">Usuario Asignado</th>
+													<th width="15%">Observaciones</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>	
+									</div>	
+								</div>
+							</div>
+							<div class="alert alert-danger alert-dismissable" style="display: none;" id="mensajes" name="mensajes" >
+						  			<span id='mensaje'> </span>
+							</div>
+						</div>
+						<!-- END BODY -->
+
+						<!-- FOOTER -->
+						<div class="modal-footer">
+							<button type="button" id="btn_registrar"
+								class="btn btn-danger">
+								<i class="fa fa-check-circle"></i> Registrar
+							</button>
+						</div>
+						<!-- END FOOTER -->
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- END MODAL ADD BITACORA -->
+
+	<!-- /main-content -->
+</div>
+<!-- /main -->
+</div>
+<!-- /content-wrapper -->
+</div>
+<!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- END BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT -->
+</div>
+<!-- /wrapper -->

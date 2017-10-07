@@ -1,0 +1,84 @@
+<!-- PROFILE TAB CONTENT -->
+<?php
+if($_SESSION['perfil']!='VENDEDOR'){
+	$url="https://www.facebook.com/A365Digital/";
+	$src="public/assets/img/logo.png";
+}
+else{
+	$url="https://www.facebook.com/AmericaMovilPeruSAC/";
+	$src="public/assets/img/claro_foto.png";
+}
+?>
+									<div class="tab-pane profile active" id="profile-tab">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="user-info-left">
+													<img height="120px" width="160px" src="<?php echo BASE_URL ?><?php echo $src;?>" alt="Profile Picture" />
+													<h2><?php echo $_SESSION['nombre']?> <i class="fa fa-circle green-font online-icon"></i><sup class="sr-only">online</sup></h2>
+													<div class="contact">
+														<ul class="list-inline social">
+															<li><a href="<?php echo $url;?>" title="Facebook" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+															<!-- <li><a href="#" title="Twitter"><i class="fa fa-twitter-square"></i></a></li>
+															<li><a href="#" title="Google Plus"><i class="fa fa-google-plus-square"></i></a></li> -->
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-9">
+												<div class="user-info-right">
+													<div class="basic-info">
+														<h3><i class="fa fa-square"></i> Informaci&oacute;n Basica </h3>
+														<p class="data-row">
+															<span class="data-name">Nombres Completos</span>
+															<span class="data-value"><?php echo $_SESSION['nombre']?></span>
+														</p>
+														<p class="data-row">
+															<span class="data-name">Nombre Usuario</span>
+															<span class="data-value"><?php echo $_SESSION['user']?></span>
+														</p>
+														<p class="data-row">
+															<span class="data-name">Tipo Documento</span>
+															<span class="data-value" id="tipodocumento" name="tipodocumento">sdsdsd</span>
+														</p>
+														<p class="data-row">
+															<span class="data-name">Nro Documento</span>
+															<span class="data-value" id="nrodocumento" name="nrodocumento">dssd</span>
+														</p>
+														<p class="data-row">
+															<span class="data-name">Fecha Ingreso</span>
+															<span class="data-value" id="registro" name="registro">Feb 22, 2012</span>
+														</p>
+													</div>
+													<div class="contact_info">
+														<h3><i class="fa fa-square"></i> Informaci&oacute;n Contacto</h3>
+														<p class="data-row">
+															<span class="data-name">Email</span>
+															<span class="data-value" id="email" name="email" style="cursor: pointer;">me@jonasmith.com</span>
+														</p>
+														<p class="data-row">
+															<span class="data-name">Telefono</span>
+															<span class="data-value" id="telefono" name="telefono" style="cursor: pointer;">(1800) 221 - 876543</span>
+														</p>
+														<p class="data-row">
+															<span class="data-name">Secundario</span>
+															<span class="data-value" id="secundario" name="secundario" style="cursor: pointer;">7878877878</span>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+<!-- END PROFILE TAB CONTENT -->
+
+</div>
+<!-- /main -->
+</div>
+<!-- /content-wrapper -->
+</div>
+<!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- END BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT -->
+</div>
+<!-- /wrapper -->
