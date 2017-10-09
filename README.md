@@ -25,4 +25,4 @@ Gracias por considerar contribuir en el proyecto! Solo es necesario saber algun 
 
 ### Link
 
-* [Fuerza Ventas](https://ffvv_claro.a365.com.pe)
+* [Fuerza Ventas](http://ffvv_claro.a365.com.pe)
