@@ -14,17 +14,21 @@ class Database extends PDO
 public function __construct() {
 try
 	{
-    	$dsn =  DB_ENGINE .':host='. DB_HOST .';dbname='.'ffvv';
+		$dsn =  DB_ENGINE .':host='. DB_HOST .';dbname='.DB_NAME;
+
         parent::__construct($dsn,DB_USER,DB_PASS,
+
                 array(
-                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES ' . 'UTF8'
+
+                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES ' . UTF8
+
                     ));
-            
+
     }
 catch (PDOException $e) {
 		$dbh=null;
 		echo "Error de conexion con  la bd".$e->getCode();
-}	
+}
 
 
 }

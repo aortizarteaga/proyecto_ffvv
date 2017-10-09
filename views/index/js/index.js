@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
 $('#btn_ingresar').click(function(){
-	
+
 	var user = $('#user').val();
 	var pass = $('#pass').val();
-	
+
 	if(user==""){
 		$('#mensajes').css('display','block')
 		$('#mensaje').html('Por favor ingrese usuario');
@@ -12,7 +12,7 @@ $('#btn_ingresar').click(function(){
 	}
 	else if (pass==""){
 		$('#mensajes').css('display','block')
-		$('#mensaje').html('Por favor ingresar contraseña');
+		$('#mensaje').html('Por favor ingresar contraseÃ±a');
 		$('#pass').focus()
 	}
 	else{
@@ -20,7 +20,7 @@ $('#btn_ingresar').click(function(){
 		$.post('index/login',{
 				user : user,
 				pass : pass
-				
+
 			},function(data){
 				if(data==1){
 					window.location="panel/";
@@ -37,7 +37,7 @@ $(document).keypress(function(e) {
     if(e.which == 13) {
     	var user = $('#user').val();
     	var pass = $('#pass').val();
-    	
+
     	if(user==""){
     		$('#mensajes').css('display','block')
     		$('#mensaje').html('Por favor ingrese usuario');
@@ -45,7 +45,7 @@ $(document).keypress(function(e) {
     	}
     	else if (pass==""){
     		$('#mensajes').css('display','block')
-    		$('#mensaje').html('Por favor ingresar contraseña');
+    		$('#mensaje').html('Por favor ingresar contraseï¿½a');
     		$('#pass').focus()
     	}
     	else{
@@ -53,7 +53,7 @@ $(document).keypress(function(e) {
     		$.post('index/login',{
     				user : user,
     				pass : pass
-    				
+
     			},function(data){
     				if(data==1){
     					window.location="panel/";

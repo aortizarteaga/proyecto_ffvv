@@ -3,33 +3,33 @@ $(document).ready(function() {
 	var modalidad
 	var cuotas
 	var rowData
-	
+
 	$( "#nacimiento" ).datepicker()
-	
-	$('#tipo_operacion').change(function(){	
+
+	$('#tipo_operacion').change(function(){
 		tipo_operacion=$('#tipo_operacion').val()
-		
+
 		if(tipo_operacion==1){
 			modalidad=''
 			var modalidad_venta=1
 			$('#listado').DataTable().clear().draw();
 			$('#listado').DataTable().destroy();
 			$('#tabla_oculta').css('display','none')
-			
+
 			$('#nacimiento').css('display','none')
 			$('#porta').css('display','none')
 			$('#lin').css('display','block')
 			$('#tele').css('display','block')
 			$('#port').css('display','none')
 			$('#equip').css('display','block')
-			$('#cuo').css('display','none')	
+			$('#cuo').css('display','none')
 			$('#mensajes').css('display','none')
 			$('#btnAddRow').css('display','block')
-			
+
 			$('#campania').empty()
 			$('#acuerdo').empty()
 			$('#nacimiento').val('')
-			
+
 			var x = document.getElementById("campania");
 			var option = document.createElement("option");
 			option.text = "SELECCIONE";
@@ -39,10 +39,10 @@ $(document).ready(function() {
 			option = document.createElement("option");
 			option.text = "SELECCIONE";
 			x.add(option)
-			
-			
+
+
 			$.post('../consulta/modalidad/'+modalidad_venta,function(data){
-				$('#modalidad_venta').html(data);	
+				$('#modalidad_venta').html(data);
 			});
 
 		}
@@ -52,36 +52,36 @@ $(document).ready(function() {
 			$('#listado').DataTable().clear().draw();
 			$('#listado').DataTable().destroy();
 			$('#tabla_oculta').css('display','none')
-			
+
 			$('#nacimiento').css('display','block')
 			$('#porta').css('display','block')
 			$('#lin').css('display','block')
 			$('#tele').css('display','none')
 			$('#port').css('display','block')
 			$('#equip').css('display','block')
-			$('#cuo').css('display','none')	
+			$('#cuo').css('display','none')
 			$('#mensajes').css('display','none')
 			$('#btnAddRow').css('display','block')
 
 			$('#campania').empty()
 			$('#acuerdo').empty()
 			$('#nacimiento').val('')
-			
+
 			var x = document.getElementById("campania");
 			var option = document.createElement("option");
 			option.text = "SELECCIONE";
 			x.add(option);
-			
+
 			x = document.getElementById("acuerdo");
 			option = document.createElement("option");
 			option.text = "SELECCIONE";
 			x.add(option)
-			
-			
+
+
 			$.post('../consulta/modalidad/'+modalidad_venta,function(data){
-				$('#modalidad_venta').html(data);	
+				$('#modalidad_venta').html(data);
 			});
-			
+
 		}
 		else if(tipo_operacion==3){
 			modalidad=''
@@ -89,89 +89,89 @@ $(document).ready(function() {
 			$('#listado').DataTable().clear().draw();
 			$('#listado').DataTable().destroy();
 			$('#tabla_oculta').css('display','none')
-			
+
 			$('#nacimiento').css('display','block')
 			$('#porta').css('display','none')
 			$('#lin').css('display','none')
 			$('#tele').css('display','none')
 			$('#port').css('display','none')
 			$('#equip').css('display','block')
-			$('#cuo').css('display','none')	
+			$('#cuo').css('display','none')
 			$('#mensajes').css('display','none')
 			$('#btnAddRow').css('display','block')
-			
+
 			$('#campania').empty()
 			$('#acuerdo').empty()
 			$('#nacimiento').val('')
-			
+
 			var x = document.getElementById("campania");
 			var option = document.createElement("option");
 			option.text = "SELECCIONE";
 			x.add(option);
-			
+
 			x = document.getElementById("acuerdo");
 			option = document.createElement("option");
 			option.text = "SELECCIONE";
 			x.add(option);
-			
+
 			$.post('../consulta/modalidad/'+modalidad_venta,function(data){
 				$('#modalidad_venta').val()
-				$('#modalidad_venta').html(data);			
+				$('#modalidad_venta').html(data);
 			});
 		}
 		else{
 			var modalidad_venta=0
 			$.post('../consulta/modalidad/'+modalidad_venta,function(data){
-				$('#modalidad_venta').html(data);			
+				$('#modalidad_venta').html(data);
 			});
 		}
 	})
-	
+
 	$('#modalidad_venta').change(function(){
 		modalidad=$('#modalidad_venta').val()
 		$('#listado').DataTable().clear().draw();
 		$('#listado').DataTable().destroy();
 		$('#tabla_oculta').css('display','none')
-			
+
 		var campania
 		var campania2
 		var campania3
 		var campania4
 		var campania5
-		
+
 		var plazo
 		var plazo2
 		var plazo3
-		
+
 /* ************************************************RENOVACION**************************************************************** */
 		if(tipo_operacion==1){
 			$('#cuotas').prop('readonly', true)
-			
+
 			if(modalidad==2){
 				$('#cuo').css('display','none')
 				$('#cuotas').val('')
 				$('#equipo').val('')
 				$('#tope').val('')
 				$('#linea').val('')
-				
+
 				campania=151
 				campania2=156
 				campania3=0
 				campania4=0
 				campania5=0
-				
+
 				plazo=3
 				plazo2=0
 				plazo3=0
-				
+
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
-					$('#campania').html(data);			
+					$('#campania').html(data);
 				});
-				
+
 				$.post('../consulta/plazo/'+plazo+'/'+plazo2+'/'+plazo3,function(data){
-					$('#acuerdo').html(data);			
+					$('#acuerdo').html(data);
 				});
-				
+
 			}
 			else if(modalidad==3){
 				$('#cuo').css('display','block')
@@ -179,25 +179,25 @@ $(document).ready(function() {
 				$('#equipo').val('')
 				$('#tope').val('')
 				$('#linea').val('')
-				
+
 				campania=159
 				campania2=151
 				campania3=0
 				campania4=0
 				campania5=0
-				
+
 				plazo=3
 				plazo2=2
 				plazo3=0
-				
+
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
-					$('#campania').html(data);			
+					$('#campania').html(data);
 				});
-				
+
 				$.post('../consulta/plazo/'+plazo+'/'+plazo2+'/'+plazo3,function(data){
-					$('#acuerdo').html(data);			
+					$('#acuerdo').html(data);
 				});
-				
+
 				$('#acuerdo').change(function(){
 					var acuerdo=$('#acuerdo').val()
 					if(acuerdo==2){
@@ -224,7 +224,7 @@ $(document).ready(function() {
 /* ************************************************PORTABILIDAD**************************************************************** */
 		else if(tipo_operacion==2){
 			$('#cuotas').prop('readonly', true)
-			
+
 			if(modalidad==1){
 				$('#equip').css('display','none')
 				$('#cuo').css('display','none')
@@ -232,25 +232,25 @@ $(document).ready(function() {
 				$('#equipo').val('')
 				$('#tope').val('')
 				$('#linea').val('')
-				
+
 				campania=155
 				campania2=0
 				campania3=0
 				campania4=0
 				campania5=0
-				
+
 				plazo=3
 				plazo2=0
 				plazo3=0
-				
+
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
-					$('#campania').html(data);			
+					$('#campania').html(data);
 				});
-				
+
 				$.post('../consulta/plazo/'+plazo+'/'+plazo2+'/'+plazo3,function(data){
-					$('#acuerdo').html(data);			
+					$('#acuerdo').html(data);
 				});
-				
+
 			}
 			else if(modalidad==2){
 				$('#equip').css('display','block')
@@ -258,26 +258,26 @@ $(document).ready(function() {
 				$('#equipo').val('')
 				$('#tope').val('')
 				$('#linea').val('')
-				
+
 				campania=155
 				campania2=160
 				campania3=151
 				campania4=0
 				campania5=0
-				
+
 				plazo=3
 				plazo2=0
 				plazo3=0
-				
+
 				$('#cuo').css('display','none')
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
-					$('#campania').html(data);			
+					$('#campania').html(data);
 				});
-				
+
 				$.post('../consulta/plazo/'+plazo+'/'+plazo2+'/'+plazo3,function(data){
-					$('#acuerdo').html(data);			
+					$('#acuerdo').html(data);
 				});
-				
+
 			}
 			else if(modalidad==3){
 				$('#equip').css('display','block')
@@ -285,28 +285,28 @@ $(document).ready(function() {
 				$('#equipo').val('')
 				$('#tope').val('')
 				$('#linea').val('')
-				
+
 				campania=158
 				campania2=151
 				campania3=0
 				campania4=0
 				campania5=0
-				
+
 				plazo=3
 				plazo2=2
 				plazo3=0
-				
+
 				$('#cuo').css('display','block')
 				$('#cuotas').val('')
-				
+
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
-					$('#campania').html(data);			
+					$('#campania').html(data);
 				});
-				
+
 				$.post('../consulta/plazo/'+plazo+'/'+plazo2+'/'+plazo3,function(data){
-					$('#acuerdo').html(data);			
+					$('#acuerdo').html(data);
 				});
-				
+
 				$('#acuerdo').change(function(){
 					var acuerdo=$('#acuerdo').val()
 					if(acuerdo==2){
@@ -329,7 +329,7 @@ $(document).ready(function() {
 			}
 		}
 /* ************************************************FIN PORTABILIDAD**************************************************************** */
-	
+
 /* ************************************************ALTA**************************************************************** */
 		else if(tipo_operacion==3){
 			if(modalidad==1){
@@ -340,25 +340,25 @@ $(document).ready(function() {
 				$('#equipo').val('')
 				$('#tope').val('')
 				$('#linea').val('')
-				
+
 				campania=154
 				campania2=0
 				campania3=0
 				campania4=0
 				campania5=0
-				
+
 				plazo=3
 				plazo2=0
 				plazo3=0
-				
+
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
-					$('#campania').html(data);			
+					$('#campania').html(data);
 				});
-				
+
 				$.post('../consulta/plazo/'+plazo+'/'+plazo2+'/'+plazo3,function(data){
-					$('#acuerdo').html(data);			
+					$('#acuerdo').html(data);
 				});
-				
+
 			}
 			else if(modalidad==2){
 				$('#equip').css('display','block')
@@ -367,26 +367,26 @@ $(document).ready(function() {
 				$('#equipo').val('')
 				$('#tope').val('')
 				$('#linea').val('')
-				
+
 				campania=154
 				campania2=160
 				campania3=0
 				campania4=0
 				campania5=0
-				
+
 				plazo=3
 				plazo2=0
 				plazo3=0
-				
+
 				$('#cuo').css('display','none')
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
-					$('#campania').html(data);			
+					$('#campania').html(data);
 				});
-				
+
 				$.post('../consulta/plazo/'+plazo+'/'+plazo2+'/'+plazo3,function(data){
-					$('#acuerdo').html(data);			
+					$('#acuerdo').html(data);
 				});
-				
+
 			}
 			else if(modalidad==3){
 				$('#equip').css('display','block')
@@ -396,28 +396,28 @@ $(document).ready(function() {
 				$('#equipo').val('')
 				$('#tope').val('')
 				$('#linea').val('')
-				
+
 				campania=157
 				campania2=0
 				campania3=0
 				campania4=0
 				campania5=0
-				
+
 				plazo=3
 				plazo2=2
 				plazo3=0
-				
+
 				$('#cuo').css('display','block')
 				$('#cuotas').val('')
-				
+
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
-					$('#campania').html(data);			
+					$('#campania').html(data);
 				});
-				
+
 				$.post('../consulta/plazo/'+plazo+'/'+plazo2+'/'+plazo3,function(data){
-					$('#acuerdo').html(data);			
+					$('#acuerdo').html(data);
 				});
-				
+
 				$('#acuerdo').change(function(){
 					var acuerdo=$('#acuerdo').val()
 					if(acuerdo==2){
@@ -440,47 +440,47 @@ $(document).ready(function() {
 		}
 /* ************************************************FIN ALTA**************************************************************** */
 	})
-	
-	$('#familia').change(function(){	
+
+	$('#familia').change(function(){
 		var familia=$('#familia').val()
 		var tope
 		var tope2
 		var tope3
-		
+
 		$.post('../consulta/plan/'+familia,function(data){
-			$('#plan').html(data);			
+			$('#plan').html(data);
 		});
-		
+
 		if(familia==1){
 			tope=1
 			tope2=2
 			tope3=0
-			
+
 			$.post('../consulta/tope/'+tope+'/'+tope2+'/'+tope3,function(data){
-				$('#tope').html(data);			
+				$('#tope').html(data);
 			});
 		}
 		else if(familia==2){
 			tope=2
 			tope2=0
 			tope3=0
-			
+
 			$.post('../consulta/tope/'+tope+'/'+tope2+'/'+tope3,function(data){
-				$('#tope').html(data);			
+				$('#tope').html(data);
 			});
 		}
 		else{
 			tope=0
 			tope2=0
 			tope3=0
-			
+
 			$.post('../consulta/tope/'+tope+'/'+tope2+'/'+tope3,function(data){
-				$('#tope').html(data);			
+				$('#tope').html(data);
 			});
 		}
 	});
-	
-	
+
+
 /* ***************************************************EDITANDO EL DATATABLE******************************************** */
 
 	//RENOVACION
@@ -507,10 +507,10 @@ $(document).ready(function() {
 	            { "bVisible": false, "aTargets": [15] },
 	            { "bVisible": false, "aTargets": [16] },
 	            { "bVisible": false, "aTargets": [17] }
-	        ],     
+	        ],
 	    });
 	  }
-	
+
 	function reno_cuotas(){
 		$('#listado').DataTable({
 			"bJQueryUI": false,
@@ -534,10 +534,10 @@ $(document).ready(function() {
 	            { "bVisible": false, "aTargets": [15] },
 	            { "bVisible": false, "aTargets": [16] },
 	            { "bVisible": false, "aTargets": [17] }
-	        ],     
+	        ],
 	    });
 	  }
-	
+
 	//PORTABILIDAD
 	function porta_chip(){
 		$('#listado').DataTable({
@@ -563,10 +563,10 @@ $(document).ready(function() {
 	            { "bVisible": false, "aTargets": [15] },
 	            { "bVisible": false, "aTargets": [16] },
 	            { "bVisible": false, "aTargets": [17] }
-	        ],     
+	        ],
 	    });
 	  }
-	
+
 	function porta_contado(){
 		$('#listado').DataTable({
 			"bJQueryUI": false,
@@ -591,10 +591,10 @@ $(document).ready(function() {
 	            { "bVisible": false, "aTargets": [15] },
 	            { "bVisible": false, "aTargets": [16] },
 	            { "bVisible": false, "aTargets": [17] }
-	        ],     
+	        ],
 	    });
 	  }
-	
+
 	function porta_cuotas(){
 		$('#listado').DataTable({
 			"bJQueryUI": false,
@@ -619,12 +619,12 @@ $(document).ready(function() {
 	            { "bVisible": false, "aTargets": [15] },
 	            { "bVisible": false, "aTargets": [16] },
 	            { "bVisible": false, "aTargets": [17] }
-	        ],     
+	        ],
 	    });
 	  }
-	
+
 	//ALTA
-	
+
 	function alta_chip(){
 		$('#listado').DataTable({
 			"bJQueryUI": false,
@@ -649,10 +649,10 @@ $(document).ready(function() {
 	            { "bVisible": false, "aTargets": [15] },
 	            { "bVisible": false, "aTargets": [16] },
 	            { "bVisible": false, "aTargets": [17] }
-	        ],     
+	        ],
 	    });
 	  }
-	
+
 	function alta_contado(){
 		$('#listado').DataTable({
 			"bJQueryUI": false,
@@ -677,10 +677,10 @@ $(document).ready(function() {
 	            { "bVisible": false, "aTargets": [15] },
 	            { "bVisible": false, "aTargets": [16] },
 	            { "bVisible": false, "aTargets": [17] }
-	        ],     
+	        ],
 	    });
 	  }
-	
+
 	function alta_cuotas(){
 		$('#listado').DataTable({
 			"bJQueryUI": false,
@@ -705,11 +705,11 @@ $(document).ready(function() {
 	            { "bVisible": false, "aTargets": [15] },
 	            { "bVisible": false, "aTargets": [16] },
 	            { "bVisible": false, "aTargets": [17] }
-	        ],     
+	        ],
 	    });
 	  }
-	
-	
+
+
 	    $('#btnAddRow').on( 'click', function () {
 	    	var deletes
 	    	function addRow(){
@@ -722,8 +722,8 @@ $(document).ready(function() {
 	    		 idoperador,deletes]
 	    		).draw(false);
 	    	 }
-	    	
-	    	
+
+
 	    	var idcampania=$('#campania').val()
 			var idplazo=$('#acuerdo').val()
 			var idfamilia=$('#familia').val()
@@ -732,7 +732,7 @@ $(document).ready(function() {
 			var idtope=$('#tope').val()
 			var idmodalidad=$('#modalidad').val()
 			var idoperador=$('#operador').val()
-			
+
 			var campania=document.getElementById('campania').options[document.getElementById('campania').selectedIndex].text
 			var plazo=document.getElementById('acuerdo').options[document.getElementById('acuerdo').selectedIndex].text
 			var familia=document.getElementById('familia').options[document.getElementById('familia').selectedIndex].text
@@ -741,17 +741,17 @@ $(document).ready(function() {
 			var tope=document.getElementById('tope').options[document.getElementById('tope').selectedIndex].text
 			var modalidadlinea=document.getElementById('modalidad').options[document.getElementById('modalidad').selectedIndex].text
 			var operador=document.getElementById('operador').options[document.getElementById('operador').selectedIndex].text
-			
+
 			var cuota=$('#cuotas').val()
 			var numero=$('#linea').val()
-			
+
 			var re = /^(-)?[0-9]*$/;
-			
+
 			if(tipo_operacion==null || tipo_operacion=='SELECCIONE' || tipo_operacion=='' ){
 				$('#mensajes').css('display','block')
 				$('#mensaje').html('Por favor elija tipo operacion');
 				$('#tipo_operacion').focus()
-				
+
 			}
 			else if(modalidad=='SELECCIONE' || modalidad==null || modalidad==''){
 				$('#mensajes').css('display','block')
@@ -760,9 +760,9 @@ $(document).ready(function() {
 			}
 			else if(idcampania==null || idcampania=='SELECCIONE' || idcampania=='' ){
 				$('#mensajes').css('display','block')
-				$('#mensaje').html('Por favor elija la campaña');
+				$('#mensaje').html('Por favor elija la campaï¿½a');
 				$('#campania').focus()
-				
+
 			}
 			else if(idplazo=='SELECCIONE' || idplazo==null || idplazo==''){
 				$('#mensajes').css('display','block')
@@ -781,7 +781,7 @@ $(document).ready(function() {
 			}
 			else{
 				$('#mensajes').css('display','none')
-				
+
 					 if(tipo_operacion==1){
 						 	if(idequipo=='SELECCIONE' || idequipo==null || idequipo==''){
 								$('#mensajes').css('display','block')
@@ -1008,36 +1008,36 @@ $(document).ready(function() {
 									 alta_cuotas()
 									 addRow()
 									 $('#oculto_boton').css('display','block')
-									 
+
 								}
 						 }
 					 }
-			}	
+			}
 	    } );
-	    
-		 
+
+
 
 	    $("#listado tbody").on('click','a.linkhref',function(){
 	    	var index = $('#listado').DataTable().row( $(this).parents('tr') ).index();
 	    	$.confirm({
 			    title: 'Plan',
-			    content: '¿Desea eliminar el plan seleccionado?',
+			    content: 'Â¿Desea eliminar el plan seleccionado?',
 			    closeIcon: true,
 			    closeIconClass: 'fa fa-close' ,
 			    confirmButton: 'Continuar',
-			    confirmButtonClass: 'btn-warning',	
+			    confirmButtonClass: 'btn-warning',
 			    cancelButton:'Cancelar',
 			    cancelButtonClass: 'btn-default',
 		        icon: 'fa fa-exclamation-triangle',
 			    confirm: function(){
 			    	$('#listado').DataTable().row(index).remove().draw( false );
-			   },cancel: function(){   
-				   
-			    }	   
+			   },cancel: function(){
+
+			    }
 			});
-	    	
+
 	    })
-	    
+
 	$('#btn_Grabar').click(function(){
 
 		var nombres=$('#nombres').val().trim()
@@ -1055,9 +1055,9 @@ $(document).ready(function() {
 		array = table.data().toArray()
 		jsonString = JSON.stringify(array);
 		$('#arraysito').val(jsonString)
-		
+
 		var formData = new FormData($("#principal")[0]);
-		
+
 		/*var json={
 				'array':array,
 				'nombres':nombres,
@@ -1070,14 +1070,14 @@ $(document).ready(function() {
 				'observaciones':observaciones,
 				'tipo_operacion':tipo_operacion,
 				'modalidad':modalidad,
-				
+
 		}*/
-		
+
 		if(tipo_operacion==null || tipo_operacion=='SELECCIONE' || tipo_operacion=='' ){
 			$('#mensajes').css('display','block')
 			$('#mensaje').html('Por favor elija tipo operacion');
 			$('#tipo_operacion').focus()
-			
+
 		}
 		else if(tipo_documento==""){
 			$('#mensajes').css('display','block')
@@ -1120,15 +1120,16 @@ $(document).ready(function() {
 			$('#contacto').focus()
 		}
 		else{
-			
+
 			$.ajax({
-				   url: '../consulta/insertConsulta',  
+				   url: '../consulta/insertConsulta',
 				   type: 'POST',
 				   data: formData,
 				   cache: false,
 				   contentType: false,
 				   processData: false,
 				   success: function(data){
+					   //document.write(data)
 					   if(data==1){
 						   $.alert({
 					   		    title: 'Consulta',
@@ -1164,7 +1165,7 @@ $(document).ready(function() {
 							    confirm: function(){
 							    	window.location = "../panel/"
 							    },
-							    cancel: function(){   
+							    cancel: function(){
 							    	$('#principal').find('input, textarea, button, select').attr('disabled',true);
 							    }
 					   		})
@@ -1173,7 +1174,7 @@ $(document).ready(function() {
 				  });
 		}
 	})
-	
+
 	function formatSizeUnits(bytes){
 	        if      (bytes>=1000000000) {bytes=(bytes/1000000000).toFixed(2);}
 	        else if (bytes>=1000000)    {bytes=(bytes/1000000).toFixed(2);}
@@ -1183,7 +1184,7 @@ $(document).ready(function() {
 	        else                        {bytes=0;}
 	        return bytes;
 	}
-	    
+
 	function formatSizeUnitsdescripction(bytes){
 	        if      (bytes>=1000000000) {bytes='GB';}
 	        else if (bytes>=1000000)    {bytes='MB';}
@@ -1193,30 +1194,30 @@ $(document).ready(function() {
 	        else                        {bytes='0 byte';}
 	        return bytes;
 	}
-	
+
 	$('#documentos_pdf').change(function(){
         var file = $("#documentos_pdf")[0].files[0];
-        var fileName = file.name;        
+        var fileName = file.name;
         var fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
         var fileSize = file.size;
         var fileType = file.type;
         var tamanio
         var descripction
-        
+
         tamanio=formatSizeUnits(fileSize)
         descripction=formatSizeUnitsdescripction(fileSize)
         pdffile_url=URL.createObjectURL(file);
-        
-        if(fileExtension!='pdf'){ 
+
+        if(fileExtension!='pdf'){
         	$('#mensajes').css('display','block')
 			$('#mensaje').html('Solo Archivos con extension .PDF');
         	$('#documentos_pdf').val('');
         	$('#document_name').text('')
 			$('#documentos_pdf').focus()
         }
-        else if(tamanio>2.2 && (descripction=='MB' ||descripction=='GB')){ 
+        else if(tamanio>2.2 && (descripction=='MB' ||descripction=='GB')){
         	$('#mensajes').css('display','block')
-			$('#mensaje').html('Tamaño de archivo supera al limite permitido');
+			$('#mensaje').html('Tamaï¿½o de archivo supera al limite permitido');
         	$('#documentos_pdf').val('');
         	$('#document_name').text('')
 			$('#documentos_pdf').focus()
@@ -1227,12 +1228,12 @@ $(document).ready(function() {
         	$('#mensajes').css('display','none')
         	$('#linkear_pdf').attr('href',pdffile_url);
         }
-    });	
-	
+    });
+
 	$('#remove_document').click(function(){
 		$('#adjuntos').css('display','none')
 		$('#documentos_pdf').val('');
 	})
-	    
- 
+
+
 });

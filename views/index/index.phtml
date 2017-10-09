@@ -6,7 +6,7 @@
 
 <head>
 	<title>FUERZA DE VENTAS A365</title>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="description" content="FFVV BUZON A465">
 	<meta name="author" content="ACOA">
@@ -15,7 +15,7 @@
 	<link href="<?php echo BASE_URL ?>public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo BASE_URL ?>public/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo BASE_URL ?>public/assets/css/main.css" rel="stylesheet" type="text/css">
-	
+
 	<!-- Javascript -->
 	<script src="<?php echo BASE_URL ?>public/assets/js/jquery/jquery-3.0.0.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/bootstrap/bootstrap.min.js"></script>
@@ -31,15 +31,15 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo BASE_URL ?>public/assets/ico/kingadmin-favicon114x114.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo BASE_URL ?>public/assets/ico/kingadmin-favicon72x72.png">
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo BASE_URL ?>public/assets/ico/kingadmin-favicon57x57.png">
-	<!-- <link rel="shortcut icon" href="<?php echo BASE_URL ?>public/assets/ico/favicon.png"> --> 
-	
+	<!-- <link rel="shortcut icon" href="<?php echo BASE_URL ?>public/assets/ico/favicon.png"> -->
+
 		<?php if(isset($_layoutParams['js']) && count($_layoutParams['js'])): ?>
 		<?php foreach($_layoutParams['js'] as $layout): ?>
    			<script src="<?php echo  $layout ?>" type="text/javascript"></script>
 		<?php endforeach; ?>
-	<?php endif; ?>   	
+	<?php endif; ?>
 
-</head> 
+</head>
 
 <body>
 	<div class="wrapper full-page-wrapper page-auth page-login text-center">
@@ -62,29 +62,29 @@
 							</div>
 						</div>
 					</div>
-					<label for="password" class="control-label sr-only"><?php echo ('Contraseña')?></label>
+					<label for="password" class="control-label sr-only"><?php echo ('ContraseÃ±a')?></label>
 					<div class="form-group">
 						<div class="col-sm-12">
 							<div class="input-group">
-								<input type="password" placeholder="<?php echo ('Contraseña')?>" id="pass" class="form-control">
+								<input type="password" placeholder="<?php echo ('ContraseÃ±a')?>" id="pass" class="form-control">
 								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 							</div>
 						</div>
 					</div>
-					<div class="alert alert-danger alert-dismissable" style="display: none;" id="mensajes" name="mensajes" >
+					<div class="alert alert-danger alert-dismissable" style="display: none;" id="mensajes" name="mensajes">
 					  <span id='mensaje'> </span>
 					</div>
-					
+
 					<label class="fancy-checkbox">
 						<input type="checkbox">
-						<span><?php echo ('Recordar contrasena')?></span>
+						<span><?php echo ('Recordar contraseÃ±a')?></span>
 					</label>
 					<button type='button' class="btn btn-danger btn-lg btn-block btn-auth" id='btn_ingresar'><i class="fa fa-arrow-circle-o-right"></i> <?php echo ('Ingresar')?></button>
 				</form>
 
 				<div class="links">
-					<p><a href="#"><?php echo ('¿Olvido su password?')?></a></p>
-					
+					<p><a href="#"><?php echo ('Â¿Olvido su password?')?></a></p>
+
 				</div>
 			</div>
 		</div>
@@ -92,10 +92,9 @@
 
 	<footer class="footer">&copy;  Copyright <?php echo date('Y');?> AAPCOA. All rights reserved.</footer>
 
-	
+
 </body>
 
 
 
 </html>
-

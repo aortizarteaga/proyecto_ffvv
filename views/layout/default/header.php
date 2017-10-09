@@ -10,16 +10,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="description" content="FFVV BUZON A465">
 	<meta name="author" content="ACOA">
-	
+
 	<!-- CSS -->
 	<link href="<?php echo BASE_URL ?>public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	
+
 	<link href="<?php echo BASE_URL ?>public/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo BASE_URL ?>public/assets/css/main.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo BASE_URL ?>public/assets/css/my-custom-styles.css" rel="stylesheet" type="text/css">
 	<!--<link href="<?php echo BASE_URL ?>public/assets/css/skins/red.css" rel="stylesheet" type="text/css">-->
 
-	
+
 	<!-- Javascript -->
 	<script src="<?php echo BASE_URL ?>public/assets/js/jquery/jquery-2.1.0.min.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/bootstrap/bootstrap.min.js"></script>
@@ -29,53 +29,52 @@
 	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/datatable/dataTables.bootstrap.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/king-table.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/jquery-mapael/jquery.mapael.js"></script>
-	
+
 	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/select2/select2.min.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/jquery-numeric/jquery.numeric.js"></script>
 
-	
+
 	<!-- SUB MENU - VENTANA -->
 	<link href="<?php echo BASE_URL?>public/demo-style-switcher/assets/css/style-switcher.css" rel="stylesheet" type="text/css">
 	<script src="<?php echo BASE_URL?>public/demo-style-switcher/assets/js/deliswitch.js"></script>
-	
+
 	<!-- ALERT DIALOG -->
-	<link rel="stylesheet" href="<?php echo BASE_URL ?>public/assets/css/jquery-confirm.css"></script>	
-	<link rel="stylesheet" src="<?php echo BASE_URL ?>public/assets/js/dist/jquery-confirm.min.css"></script>	
-	<script src="<?php echo BASE_URL ?>public/assets/js/jquery-confirm.js"></script>	
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>public/assets/css/jquery-confirm.css"></script>
+	<link rel="stylesheet" src="<?php echo BASE_URL ?>public/assets/js/dist/jquery-confirm.min.css"></script>
+	<script src="<?php echo BASE_URL ?>public/assets/js/jquery-confirm.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/dist/jquery-confirm.min.js"></script>
-	
+
 	<!-- COMBODATE -->
 	<script src="<?php echo BASE_URL?>public/assets/js/plugins/combodate/combodate.js"></script>
-	<script src="<?php echo BASE_URL?>public/assets/js/plugins/moment/moment.min.js"></script>	
+	<script src="<?php echo BASE_URL?>public/assets/js/plugins/moment/moment.min.js"></script>
 	<script src="<?php echo BASE_URL?>public/assets/js/plugins/bootstrap-editable/bootstrap-editable.min.js"></script>
 	<script src="<?php echo BASE_URL?>public/assets/js/plugins/typeahead/typeahead.js"></script>
-	<script src="<?php echo BASE_URL?>public/assets/js/plugins/typeahead/typeaheadjs.1.5.1.js"></script>	
-	<script src="<?php echo BASE_URL?>public/assets/js/plugins/bootstrap-editable/address.custom.js"></script>	
+	<script src="<?php echo BASE_URL?>public/assets/js/plugins/typeahead/typeaheadjs.1.5.1.js"></script>
+	<script src="<?php echo BASE_URL?>public/assets/js/plugins/bootstrap-editable/address.custom.js"></script>
 	<script src="<?php echo BASE_URL?>public/assets/js/king-elements.js"></script>
-	
-	
+
+
 	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/bootstrap-editable/jquery.mockjax.min.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/bootstrap-editable/demo-mock.js"></script>
-	
+
 	<!-- DATE PCIKER -->
 	<script src="<?php echo BASE_URL?>public/assets/js/datepicker/daterangepicker.js"></script>
 	<script src="<?php echo BASE_URL?>public/assets/js/datepicker/moment.js"></script>
-	<script src="<?php echo BASE_URL?>public/assets/js/datepicker/moment.min.js"></script>	
-	<script src="<?php echo BASE_URL?>public/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>	
-	
+	<script src="<?php echo BASE_URL?>public/assets/js/datepicker/moment.min.js"></script>
+	<script src="<?php echo BASE_URL?>public/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
 	<!-- <script src="assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script> -->
-	
+
 	<link rel="shortcut icon" href="<?php echo BASE_URL ?>public/assets/ico/logo_icon.png">
-	
+
 	<?php if(isset($_layoutParams['js']) && count($_layoutParams['js'])): ?>
 		<?php foreach($_layoutParams['js'] as $layout): ?>
    			<script src="<?php echo  $layout ?>" type="text/javascript"></script>
 		<?php endforeach; ?>
-	<?php endif; ?>   	
-	
-</head>
+	<?php endif; ?>
 
+</head>
 
 <body class="dashboard">
 	<!-- WRAPPER -->
@@ -107,7 +106,7 @@
 												<img height="24px" width="24px" src="<?php echo BASE_URL ?>public/assets/img/logo_header.png" alt="" />
 												<span style="text-transform: lowercase;" class="name"><?php echo $_SESSION['user']?></span> <span class="caret"></span>
 											</a>
-											
+
 											<ul class="dropdown-menu" role="menu">
 												<li>
 													<a href="<?php echo BASE_URL?>perfil">
@@ -128,7 +127,7 @@
 													</a>
 												</li>
 											</ul>
-											
+
 										</div>
 									</div>
 									<!-- end logged user and the menu -->
@@ -144,7 +143,7 @@
 			<!-- /container -->
 		</div>
 		<!-- /top -->
-		
+
 		<!-- BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT -->
 		<div class="bottom">
 			<div class="container">
@@ -154,7 +153,6 @@
 						<!-- main-nav -->
 						<nav class="main-nav">
 							<ul class="main-menu">
-							
 							<?php if (isset($_SESSION['menu']['MENU_PANEL'])):?>
 								<li>
 									<a href="#" class="js-sub-menu-toggle">
@@ -167,8 +165,8 @@
 										<?php endforeach;?>
 									</ul>
 								</li>
-							<?php endif;?>	
-							
+							<?php endif;?>
+
 							<?php if (isset($_SESSION['menu']['MENU_CONSULTA'])):?>
 								<li>
 									<a href="#" class="js-sub-menu-toggle">
@@ -181,8 +179,8 @@
 										<?php endforeach;?>
 									</ul>
 								</li>
-							<?php endif;?>	
-							
+							<?php endif;?>
+
 							</ul>
 						</nav>
 						<!-- /main-nav -->
@@ -206,7 +204,7 @@
 <!-- 									<div class="data-value"> -->
 <!-- 										274.43 / 2 GB -->
 <!-- 										<div class="progress progress-xs"> -->
-<!--  									<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">-->	
+<!--  									<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">-->
 <!-- 												<span class="sr-only">10%</span> -->
 <!-- 											</div> -->
 <!-- 										</div> -->
