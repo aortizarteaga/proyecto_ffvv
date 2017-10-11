@@ -32,7 +32,7 @@ CREATE TABLE `a365_buzon_archivos` (
   PRIMARY KEY (`id_buzon_archivos`),
   KEY `fk_usr_registro_archivos` (`usr_registro`),
   CONSTRAINT `fk_usr_registro_archivos` FOREIGN KEY (`usr_registro`) REFERENCES `a365_buzon_usuario` (`id_buzon_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `a365_buzon_archivos` */
 
@@ -40,7 +40,8 @@ insert  into `a365_buzon_archivos`(`id_buzon_archivos`,`id_buzon_consulta`,`nomb
 (1,5,'5.pdf','application/pdf','aortiz','::1','2017-10-08 22:19:07','t'),
 (2,6,'6.pdf','application/pdf','aortiz','::1','2017-10-08 22:56:53','t'),
 (3,7,'7.pdf','application/pdf','aortiz','::1','2017-10-08 23:29:53','t'),
-(4,9,'9.pdf','application/pdf','aortiz','::1','2017-10-09 00:01:33','t');
+(4,9,'9.pdf','application/pdf','aortiz','::1','2017-10-09 00:01:33','t'),
+(5,23,'23.pdf','application/pdf','aortiz','::1','2017-10-10 22:33:20','t');
 
 /*Table structure for table `a365_buzon_campania` */
 
@@ -50,7 +51,7 @@ CREATE TABLE `a365_buzon_campania` (
   `id_buzon_campania` mediumint(3) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) DEFAULT NULL,
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `flg_activado` enum('N','Y') DEFAULT 'Y',
+  `flg_activado` enum('t','f') DEFAULT 't',
   PRIMARY KEY (`id_buzon_campania`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -91,7 +92,7 @@ CREATE TABLE `a365_buzon_consulta` (
   `ip_usr_ult_modificacion` char(20) DEFAULT NULL,
   `fecha_modificacion` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id_buzon_consulta`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 /*Data for the table `a365_buzon_consulta` */
 
@@ -116,7 +117,8 @@ insert  into `a365_buzon_consulta`(`id_buzon_consulta`,`nombres`,`ap_paterno`,`a
 (19,'dfdf','dffd','dfdf','2017-10-30 00:00:00','1','434',3,1,NULL,NULL,NULL,NULL,NULL,NULL,'4344',NULL,NULL,NULL,NULL,NULL,'2017-10-09 00:29:44','dfdf','aortiz','::1','2017-10-09 00:29:44',NULL,NULL,'0000-00-00 00:00:00'),
 (20,'ffd','gdg','dg',NULL,'1','445',1,3,NULL,NULL,NULL,NULL,NULL,NULL,'445',NULL,NULL,NULL,NULL,NULL,'2017-10-09 00:30:15','gdffd','aortiz','::1','2017-10-09 00:30:15',NULL,NULL,'0000-00-00 00:00:00'),
 (21,'fdf','dsffds','fsddfs',NULL,'1','44554',1,3,NULL,NULL,NULL,NULL,NULL,NULL,'4545',NULL,NULL,NULL,NULL,NULL,'2017-10-09 00:30:58','dsffsd','aortiz','::1','2017-10-09 00:30:58',NULL,NULL,'0000-00-00 00:00:00'),
-(22,'dsd','fsdfds','dfdf',NULL,'1','434',1,2,NULL,NULL,NULL,NULL,NULL,NULL,'4334',NULL,NULL,NULL,NULL,NULL,'2017-10-09 00:33:34','fdfdgf','aortiz','::1','2017-10-09 00:33:34',NULL,NULL,'0000-00-00 00:00:00');
+(22,'dsd','fsdfds','dfdf',NULL,'1','434',1,2,NULL,NULL,NULL,NULL,NULL,NULL,'4334',NULL,NULL,NULL,NULL,NULL,'2017-10-09 00:33:34','fdfdgf','aortiz','::1','2017-10-09 00:33:34',NULL,NULL,'0000-00-00 00:00:00'),
+(23,'anthony','cesar','ortiz',NULL,'1','47235779',1,2,NULL,NULL,NULL,NULL,NULL,NULL,'943434334',NULL,NULL,NULL,NULL,NULL,'2017-10-10 22:33:20','dddffd','aortiz','::1','2017-10-10 22:33:20',NULL,NULL,'0000-00-00 00:00:00');
 
 /*Table structure for table `a365_buzon_consulta_bitacora` */
 
@@ -137,13 +139,18 @@ CREATE TABLE `a365_buzon_consulta_bitacora` (
   `usr_propietario` char(20) DEFAULT NULL,
   PRIMARY KEY (`id_buzon_consulta`,`nromovimiento`),
   CONSTRAINT `fk_consulta_mov` FOREIGN KEY (`id_buzon_consulta`) REFERENCES `a365_buzon_consulta` (`id_buzon_consulta`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 /*Data for the table `a365_buzon_consulta_bitacora` */
 
 insert  into `a365_buzon_consulta_bitacora`(`id_buzon_consulta`,`nromovimiento`,`id_buzon_estado_consulta`,`id_buzon_motivo_consulta`,`observaciones`,`id_usr_registro`,`ip_usr_registro`,`fecha_registro`,`id_usr_modificacion`,`ip_usr_modificacion`,`fecha_registro_modificacion`,`usr_propietario`) values 
+(2,1,2,2,'ffdg','aortiz','::1','2017-10-10 23:39:32',NULL,NULL,'0000-00-00 00:00:00',NULL),
 (21,1,1,1,'dsffsd','aortiz','::1','2017-10-09 00:32:52',NULL,NULL,'0000-00-00 00:00:00',NULL),
-(22,1,1,1,'fdfdgf','aortiz','::1','2017-10-09 00:33:34',NULL,NULL,'0000-00-00 00:00:00',NULL);
+(22,1,1,1,'fdfdgf','aortiz','::1','2017-10-09 00:33:34',NULL,NULL,'0000-00-00 00:00:00',NULL),
+(23,1,1,1,'dddffd','aortiz','::1','2017-10-10 22:33:20',NULL,NULL,'0000-00-00 00:00:00',NULL),
+(23,2,3,4,'se consulta reniec','aortiz','::1','2017-10-10 22:41:32',NULL,NULL,'0000-00-00 00:00:00',NULL),
+(23,3,2,2,'se consulta reniec','aortiz','::1','2017-10-10 22:42:12',NULL,NULL,'0000-00-00 00:00:00',NULL),
+(23,4,3,4,'se consulta reniec','aortiz','::1','2017-10-10 22:42:52',NULL,NULL,'0000-00-00 00:00:00',NULL);
 
 /*Table structure for table `a365_buzon_consultaxplan` */
 
@@ -184,7 +191,7 @@ CREATE TABLE `a365_buzon_consultaxplan` (
   CONSTRAINT `fk_plazo_consultaxplan` FOREIGN KEY (`id_tipo_plazo`) REFERENCES `a365_buzon_tipo_plazo` (`id_buzon_tipo_plazo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_producto_consultaxplan` FOREIGN KEY (`id_producto`) REFERENCES `aai_clbkofi_productos` (`id_clbkofi_producto`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_usr_consultaxplan` FOREIGN KEY (`id_usr_registro`) REFERENCES `a365_buzon_usuario` (`id_buzon_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `a365_buzon_consultaxplan` */
 
@@ -194,7 +201,8 @@ insert  into `a365_buzon_consultaxplan`(`id_buzon_consultaxplan`,`id_buzon_consu
 (10,19,154,3,1,1,NULL,1,'0',NULL,NULL,NULL,'aortiz','::1','2017-10-09 00:29:44'),
 (11,20,159,2,1,1,5,1,'12','44554',NULL,NULL,'aortiz','::1','2017-10-09 00:30:15'),
 (12,21,151,2,1,1,4,1,'12','45',NULL,NULL,'aortiz','::1','2017-10-09 00:30:58'),
-(13,22,151,3,1,5,5,1,'0','4545',NULL,NULL,'aortiz','::1','2017-10-09 00:33:34');
+(13,22,151,3,1,5,5,1,'0','4545',NULL,NULL,'aortiz','::1','2017-10-09 00:33:34'),
+(14,23,151,3,2,8,4,2,'0','43434343',NULL,NULL,'aortiz','::1','2017-10-10 22:33:20');
 
 /*Table structure for table `a365_buzon_estado` */
 
@@ -217,15 +225,17 @@ DROP TABLE IF EXISTS `a365_buzon_estado_consulta`;
 CREATE TABLE `a365_buzon_estado_consulta` (
   `id_buzon_estado_consulta` mediumint(2) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) DEFAULT NULL,
-  `flg_activo` enum('N','Y') DEFAULT 'Y',
+  `flg_activo` enum('t','f') DEFAULT 't',
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_buzon_estado_consulta`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `a365_buzon_estado_consulta` */
 
 insert  into `a365_buzon_estado_consulta`(`id_buzon_estado_consulta`,`descripcion`,`flg_activo`,`fecha_registro`) values 
-(1,'REGISTRADO','Y','2017-10-09 00:26:04');
+(1,'REGISTRADO','t','2017-10-10 22:31:20'),
+(2,'PENDIENTE','t','2017-10-10 22:31:24'),
+(3,'PROCESO','t','2017-10-10 22:31:28');
 
 /*Table structure for table `a365_buzon_log_reportes` */
 
@@ -267,17 +277,21 @@ CREATE TABLE `a365_buzon_motivo_consulta` (
   `id_buzon_motivo_consulta` mediumint(2) NOT NULL AUTO_INCREMENT,
   `id_estado_consulta` mediumint(2) DEFAULT NULL,
   `descripcion` varchar(50) DEFAULT NULL,
-  `flg_activo` enum('N','Y') DEFAULT 'Y',
+  `flg_activo` enum('t','f') DEFAULT 't',
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_buzon_motivo_consulta`),
   KEY `fk_estado_motivoconsulta` (`id_estado_consulta`),
   CONSTRAINT `fk_estado_motivoconsulta` FOREIGN KEY (`id_estado_consulta`) REFERENCES `a365_buzon_estado_consulta` (`id_buzon_estado_consulta`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `a365_buzon_motivo_consulta` */
 
 insert  into `a365_buzon_motivo_consulta`(`id_buzon_motivo_consulta`,`id_estado_consulta`,`descripcion`,`flg_activo`,`fecha_registro`) values 
-(1,1,'-','Y','2017-10-09 00:28:01');
+(1,1,'-','','2017-10-09 00:28:01'),
+(2,2,'ASIGNADO','t','2017-10-10 22:31:49'),
+(3,3,'CONSULTA SEC','t','2017-10-10 22:32:14'),
+(4,3,'CONSULTA RENIEC','t','2017-10-10 22:32:19'),
+(5,3,'CONSULTA SIBOF','t','2017-10-10 22:32:26');
 
 /*Table structure for table `a365_buzon_operador` */
 
