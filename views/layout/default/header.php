@@ -75,7 +75,6 @@
 	<?php endif; ?>
 
 </head>
-
 <body class="dashboard">
 	<!-- WRAPPER -->
 	<div class="wrapper">
@@ -181,14 +180,30 @@
 								</li>
 							<?php endif;?>
 
+							<?php if (isset($_SESSION['menu']['MENU_REGISTRO'])):?>
+								<li>
+									<a href="#" class="js-sub-menu-toggle">
+										<i class="fa fa-user-plus"></i><span class="text">Gestión Usuario</span>
+										<i class="toggle-icon fa fa-angle-left"></i>
+									</a>
+									<ul class="sub-menu ">
+										<?php foreach ($_SESSION['menu']['MENU_REGISTRO'] as $submenu=>$value):?>
+										<li><a href="<?php echo BASE_URL . $value['UBICACION']?>"><span class="text"><?php echo $value['DESCRIPCION']?></span></a></li>
+										<?php endforeach;?>
+									</ul>
+								</li>
+							<?php endif;?>
+
 							</ul>
 						</nav>
 						<!-- /main-nav -->
 						<div class="sidebar-minified js-toggle-minified">
 							<i class="fa fa-angle-left"></i>
 						</div>
+
+
 						<!-- sidebar content -->
-						<div class="sidebar-content">
+					<!--<div class="sidebar-content">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h5><i class="fa fa-search"></i> Atenci&oacute;n Consultas</h5>
@@ -196,7 +211,8 @@
 								<div class="panel-body">
 									<p>Sistema exclusivo para uso de Vendedores, Agentes y Supervisores</p>
 								</div>
-							</div>
+							</div>-->
+
 <!-- 							<h5 class="label label-default"><i class="fa fa-info-circle"></i> Informaci&oacute;n</h5> -->
 <!-- 							<ul class="list-unstyled list-info-sidebar bottom-30px"> -->
 <!-- 								<li class="data-row"> -->
@@ -211,7 +227,7 @@
 <!-- 									</div> -->
 <!-- 								</li> -->
 <!-- 							</ul> -->
-						</div>
+						<!--</div>-->
 						<!-- end sidebar content -->
 					</div>
 					<!-- end left sidebar -->
