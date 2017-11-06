@@ -147,6 +147,7 @@ $(document).ready(function() {
 	function tabla_principal(tipo_usuario){
 		var bitacora;
 		var actualizacion;
+
 		if(tipo_usuario=='ADMINISTRADOR' || tipo_usuario=='SUPERVISOR'){
 			bitacora="cursor: pointer;display:inline;color: blue; font-size:20px"
 			actualizacion="cursor: pointer;display:inline;color: red;font-size:20px"
@@ -360,7 +361,7 @@ $(document).ready(function() {
  			}
 	   	});
 
-	   	 $('#myModalLabel').html('<strong>ACTUALIZACION DE DATOS - ID DE CONSULTA</strong>'+'<strong>'+idbuzon+'</strong>');
+	   $('#myModalLabel').html('<strong>ACTUALIZACION DE DATOS - ID DE CONSULTA</strong>'+'<strong>'+idbuzon+'</strong>');
 		 $('#id_consulta').val(idbuzon)
 		 $('#operacion').text(tipo_operacion)
 		 $('#modalidad').text(modalidad)
@@ -446,8 +447,8 @@ $(document).ready(function() {
 	   		}
 	   	 }
 
-	   	$('#listado_planes').dataTable().fnDestroy();
-		$('#listado_planes').DataTable( {
+	  	$('#listado_planes').dataTable().fnDestroy();
+			$('#listado_planes').DataTable( {
 			   "order": [[ 0, "desc" ]],
 		        "ajax": "../panel/getConsultasPlanes/"+idbuzon,
 		        "columns": [
@@ -723,7 +724,7 @@ $(document).ready(function() {
 
 		$.confirm({
 		    title: 'Reasignar',
-		    content: '¿Desea reasignar el registro '+idbuzon +'?',
+		    content: '¿Desea reasignar el registro '+idbuzon +' ?',
 		    closeIcon: true,
 		    closeIconClass: 'fa fa-close' ,
 		    confirmButton: 'Continuar',

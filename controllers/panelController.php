@@ -50,6 +50,7 @@ class panelController extends Controller {
 		foreach ($planes as $reg):
 		$miArray['data'][]=$reg;
 		endforeach;
+
 		echo json_encode ($miArray);
 	}
 
@@ -92,12 +93,9 @@ class panelController extends Controller {
 		$objModel=$this->loadModel('panel');
 		$insert_bitacora=$objModel->getInsertBitacora($idbuzon,$estado_consulta,$motivo_consulta,$observaciones,$iduser,$ip_usr);
 
-		echo $insert_bitacora;
-
 		if($insert_bitacora[0]){
 			echo 1;
 		}
-
 	}
 
 	public function getConsultasCriterio($tipo_usuario){

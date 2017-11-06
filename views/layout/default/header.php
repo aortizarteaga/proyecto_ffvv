@@ -183,7 +183,11 @@
 							<?php if (isset($_SESSION['menu']['MENU_REGISTRO'])):?>
 								<li>
 									<a href="#" class="js-sub-menu-toggle">
+<<<<<<< HEAD
 										<i class="fa fa-user-plus"></i><span class="text">Gestión Usuario</span>
+=======
+										<i class="fa fa-user-plus fa-fw"></i><span class="text">Registro Usuario</span>
+>>>>>>> 0910eb6d203cecbf38b2344b9b24ab792a132b82
 										<i class="toggle-icon fa fa-angle-left"></i>
 									</a>
 									<ul class="sub-menu ">

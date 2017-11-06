@@ -76,7 +76,6 @@ class panelModel extends Model {
 
 	public function getConsultasPlanes($idbuzon){
 
-
 		$sql = "SELECT
 				clbc.descripcion AS campania,
 				btp.descripcion AS tipo_plazo,
@@ -169,8 +168,8 @@ class panelModel extends Model {
 				:id_buzon_motivo_consulta,:observaciones,:id_usr_registro,:ip_usr_registro)";
 
 		/*$sql = "INSERT INTO a365_buzon_consulta_bitacora(id_buzon_consulta,id_buzon_estado_consulta,id_buzon_motivo_consulta,
-		observaciones,id_usr_registro,ip_usr_registro) VALUES($idbuzon,$estado_consulta,$motivo_consulta,$observaciones,
-		'$iduser','$ip_usr')";*/
+				observaciones,id_usr_registro,ip_usr_registro) VALUES($idbuzon,$estado_consulta,$motivo_consulta,$observaciones,
+				'$iduser','$ip_usr')";*/
 
 		$prod = $this->_db->prepare($sql);
 
@@ -178,15 +177,8 @@ class panelModel extends Model {
 							 ':id_buzon_motivo_consulta'=> $motivo_consulta,':observaciones'=> $observaciones,
 							 ':id_usr_registro'=> $iduser,':ip_usr_registro'=> $ip_usr));
 
-		 if($this->_db->errno){
- 			return false;
- 		}else{
- 			return true;
- 		}
-
- 		$arr = $prod->errorInfo();
- 		return $arr;
-
+		$arr = $prod->errorInfo();
+		return $arr;
 	}
 
 	public function getConsultaCriterio($tipo_usuario,$user,$criterio,$fecha_inicio,$fecha_fin,$criterios_busqueda){
@@ -235,8 +227,8 @@ class panelModel extends Model {
 				nro_referencia,
 				(SELECT ec.descripcion FROM a365_buzon_consulta_bitacora cb INNER JOIN a365_buzon_estado_consulta ec ON cb.id_buzon_estado_consulta=ec.id_buzon_estado_consulta
 				WHERE `id_buzon_consulta`=bc.id_buzon_consulta AND nromovimiento=(SELECT max(nromovimiento) FROM a365_buzon_consulta_bitacora WHERE `id_buzon_consulta`=bc.id_buzon_consulta)) as estado,
-				(SELECT mc.descripcion FROM a365_buzon_consulta_bitacora cb INNER JOIN a365_buzon_motivo_consulta mc ON cb.id_buzon_estado_consulta=mc.id_buzon_motivo_consulta
-				WHERE `id_buzon_consulta`=bc.id_buzon_consulta AND nromovimiento=(SELECT max(nromovimiento) FROM a365_buzon_consulta_bitacora WHERE `id_buzon_consulta`=bc.id_buzon_consulta)) AS motivo,
+			  (SELECT mc.descripcion FROM a365_buzon_consulta_bitacora cb INNER JOIN a365_buzon_motivo_consulta mc ON cb.id_buzon_estado_consulta=mc.id_buzon_motivo_consulta
+			  WHERE `id_buzon_consulta`=bc.id_buzon_consulta AND nromovimiento=(SELECT max(nromovimiento) FROM a365_buzon_consulta_bitacora WHERE `id_buzon_consulta`=bc.id_buzon_consulta)) AS motivo,
 				bc.id_buzon_consulta AS opciones
 				FROM a365_buzon_consulta bc INNER JOIN a365_buzon_tipo_documento btd ON
 				bc.id_tipo_documento=btd.id_buzon_tipo_doc INNER JOIN a365_buzon_tipo_operacion bto ON

@@ -154,15 +154,15 @@ $(document).ready(function() {
 				$('#tope').val('')
 				$('#linea').val('')
 
-				campania=151
-				campania2=156
-				campania3=0
-				campania4=0
-				campania5=0
+				campania=151;
+				campania2=156;
+				campania3='NULL';
+				campania4='NULL';
+				campania5='NULL';
 
 				plazo=3
-				plazo2=0
-				plazo3=0
+				plazo2='NULL'
+				plazo3='NULL'
 
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
 					$('#campania').html(data);
@@ -182,13 +182,13 @@ $(document).ready(function() {
 
 				campania=159
 				campania2=151
-				campania3=0
-				campania4=0
-				campania5=0
+				campania3='NULL'
+				campania4='NULL'
+				campania5='NULL'
 
 				plazo=3
 				plazo2=2
-				plazo3=0
+				plazo3='NULL'
 
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
 					$('#campania').html(data);
@@ -234,14 +234,14 @@ $(document).ready(function() {
 				$('#linea').val('')
 
 				campania=155
-				campania2=0
-				campania3=0
-				campania4=0
-				campania5=0
+				campania2='NULL'
+				campania3='NULL'
+				campania4='NULL'
+				campania5='NULL'
 
 				plazo=3
-				plazo2=0
-				plazo3=0
+				plazo2='NULL'
+				plazo3='NULL'
 
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
 					$('#campania').html(data);
@@ -262,12 +262,12 @@ $(document).ready(function() {
 				campania=155
 				campania2=160
 				campania3=151
-				campania4=0
-				campania5=0
+				campania4='NULL'
+				campania5='NULL'
 
 				plazo=3
-				plazo2=0
-				plazo3=0
+				plazo2='NULL'
+				plazo3='NULL'
 
 				$('#cuo').css('display','none')
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
@@ -288,13 +288,13 @@ $(document).ready(function() {
 
 				campania=158
 				campania2=151
-				campania3=0
-				campania4=0
-				campania5=0
+				campania3='NULL'
+				campania4='NULL'
+				campania5='NULL'
 
 				plazo=3
 				plazo2=2
-				plazo3=0
+				plazo3='NULL'
 
 				$('#cuo').css('display','block')
 				$('#cuotas').val('')
@@ -342,14 +342,14 @@ $(document).ready(function() {
 				$('#linea').val('')
 
 				campania=154
-				campania2=0
-				campania3=0
-				campania4=0
-				campania5=0
+				campania2='NULL'
+				campania3='NULL'
+				campania4='NULL'
+				campania5='NULL'
 
 				plazo=3
-				plazo2=0
-				plazo3=0
+				plazo2='NULL'
+				plazo3='NULL'
 
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
 					$('#campania').html(data);
@@ -370,13 +370,13 @@ $(document).ready(function() {
 
 				campania=154
 				campania2=160
-				campania3=0
-				campania4=0
-				campania5=0
+				campania3='NULL'
+				campania4='NULL'
+				campania5='NULL'
 
 				plazo=3
-				plazo2=0
-				plazo3=0
+				plazo2='NULL'
+				plazo3='NULL'
 
 				$('#cuo').css('display','none')
 				$.post('../consulta/campania/'+campania+'/'+campania2+'/'+campania3+'/'+campania4+'/'+campania5,function(data){
@@ -398,14 +398,14 @@ $(document).ready(function() {
 				$('#linea').val('')
 
 				campania=157
-				campania2=0
-				campania3=0
-				campania4=0
-				campania5=0
+				campania2='NULL'
+				campania3='NULL'
+				campania4='NULL'
+				campania5='NULL'
 
 				plazo=3
 				plazo2=2
-				plazo3=0
+				plazo3='NULL'
 
 				$('#cuo').css('display','block')
 				$('#cuotas').val('')
@@ -454,7 +454,7 @@ $(document).ready(function() {
 		if(familia==1){
 			tope=1
 			tope2=2
-			tope3=0
+			tope3='NULL'
 
 			$.post('../consulta/tope/'+tope+'/'+tope2+'/'+tope3,function(data){
 				$('#tope').html(data);
@@ -462,17 +462,17 @@ $(document).ready(function() {
 		}
 		else if(familia==2){
 			tope=2
-			tope2=0
-			tope3=0
+			tope2='NULL'
+			tope3='NULL'
 
 			$.post('../consulta/tope/'+tope+'/'+tope2+'/'+tope3,function(data){
 				$('#tope').html(data);
 			});
 		}
 		else{
-			tope=0
-			tope2=0
-			tope3=0
+			tope='NULL'
+			tope2='NULL'
+			tope3='NULL'
 
 			$.post('../consulta/tope/'+tope+'/'+tope2+'/'+tope3,function(data){
 				$('#tope').html(data);

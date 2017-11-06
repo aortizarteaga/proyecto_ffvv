@@ -51,6 +51,7 @@ class usuarioModel extends Model {
 		$result = $this->_db->query($sql) or die('Error '.$sql);
 
 		foreach($result as $indice=>$value):
+			//echo value[$indice]."<br>";
 			$data[trim($value[0])][trim($value[2])]=array('DESCRIPCION'=>trim($value[1]),'UBICACION'=>trim($value[3]));
 		endforeach;
 
