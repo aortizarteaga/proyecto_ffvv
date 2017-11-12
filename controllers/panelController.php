@@ -10,9 +10,29 @@ class panelController extends Controller {
 		$objModel=$this->loadModel('panel');
 		$this->_view->tipo_documento=$objModel->getDocumento();
 		$this->_view->estado_consulta=$objModel->getEstado();
+		$this->_view->usuarios=$objModel->getusuarios();
 		$this->_view->setJs ( array ('panel' ) );
 		$this->_view->renderizar ( 'panel' );
 
+	}
+
+	public function getConsultasCriterio2($tipo_usuario){
+
+		$objModel=$this->loadModel('panel');
+
+		$user = $_SESSION ['user'];
+		$criterio=$_POST['criterio'];
+		$fecha_inicio=date("Y-m-d", strtotime($_POST['fecha_inicio']));
+		$fecha_fin=date("Y-m-d", strtotime($_POST['fecha_fin']));
+		$criterios_busqueda=$_POST['criterios_busqueda'];
+
+		$consultas_criterio=$objModel->getConsultaCriterio2($tipo_usuario,$user,$criterio,$fecha_inicio,$fecha_fin,$criterios_busqueda);
+
+		foreach ($consultas_criterio as $reg):
+		$miArray['data'][]=$reg;
+		endforeach;
+
+		echo json_encode ($miArray);
 	}
 
 	public function getMotivo($estado){
@@ -108,11 +128,6 @@ class panelController extends Controller {
 		$fecha_fin=date("Y-m-d", strtotime($_POST['fecha_fin']));
 		$criterios_busqueda=$_POST['criterios_busqueda'];
 
-		/*$fecha_inicio='2017-02-10';
-		$fecha_fin='2017-02-21';
-		$criterio=1;
-		 $criterios_busqueda=143; */
-
 		$consultas_criterio=$objModel->getConsultaCriterio($tipo_usuario,$user,$criterio,$fecha_inicio,$fecha_fin,$criterios_busqueda);
 
 		foreach ($consultas_criterio as $reg):
@@ -141,6 +156,16 @@ class panelController extends Controller {
 		$objModel=$this->loadModel('panel');
 		$consulta_pdf=$objModel->getOcultarpdf($idbuzon);
 		echo count($consulta_pdf[0]);
+	}
+
+	public function asignamiento(){
+		$idbuzon = $_POST['idbuzon'];
+		$idusuario = $_POST['idusuario'];
+		$iduser=trim($_SESSION['user']);
+		$ip_usr=trim($_SERVER['REMOTE_ADDR']);
+		$objModel=$this->loadModel('panel');
+		$result=$objModel->asignamiento($idbuzon, $idusuario,$iduser,$ip_usr);
+		if($result) echo 1; else echo 0;
 	}
 
 }

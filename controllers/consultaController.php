@@ -130,10 +130,6 @@ class consultaController extends Controller {
 
 				if (!in_array($mime, $mimes_permitidos)){
 					unlink($destino_archivo);
-					/*$fp = fopen($destino_archivo,"rb");
-					$contenido = fread($fp, filesize($destino_archivo));
-					$pdf = pg_escape_bytea($contenido);
-					fclose($fp);*/
 				}
 				else{
 					$result_pdf = $objModel->insertArchivo($id_ult[1],$nombreArchivo, $mime,$iduser,$ip_usr);

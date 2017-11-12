@@ -12,17 +12,6 @@ class usuarioModel extends Model {
 
 		if ($prod->rowCount()) return true;
 		 else return false;
-
-		/*  if ($prod->rowCount()){
-		 	$reg=$prod->fetch();
-		 	if($reg['id_tipo_usuario']==4 && $_SERVER['REMOTE_ADDR']!='143.137.147.210'){
-		 		return true;
-		 	}
-		 	else{
-		 		return false;
-		 	}
-		 } */
-
 	}
 
 	public function getNombre($user){

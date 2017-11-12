@@ -1,0 +1,239 @@
+<!-- main -->
+<div class="content">
+	<div class="main-content">
+		<input style="display: none;" name="tipo_usuario_1" id="tipo_usuario_1" value="<?php echo $_SESSION['perfil'];?>">
+		<input style="display: none;" name="usuario_rea" id="usuario_rea" value="<?php echo $_SESSION['user'];?>">
+		<input style="display: none;" name="ip_rea" id="ip_rea" value="<?php echo $_SERVER['REMOTE_ADDR'];?>">
+
+		<!-- OPCIONES -->
+		<div class="widget widget-table" cellspacing="0">
+			<div class="widget-header">
+				<h3>
+					<i class="fa fa-search"></i> Consulta de Usuarios
+				</h3>
+			</div>
+			<div class="widget-content">
+
+				<!-- COLUMN FILTER DATA TABLE -->
+
+										<table id="listado_usuarios" class="table table-sorting table-striped table-hover datatable">
+											<thead>
+												<tr id="head_usuarios">
+													<th><input style="width: 150px;" type="text" class="form-control input-sm" placeholder="Usuario" /></th>
+													<th><input style="width: 150px;" type="text" class="form-control input-sm" placeholder="Nombre" /></th>
+													<th><input style="width: 150px;" type="text" class="form-control input-sm" placeholder="Apellido" /></th>
+													<th><input style="width: 150px;" type="text" class="form-control input-sm" placeholder="Tipo de Documento" /></th>
+													<th><input style="width: 150px;" type="text" class="form-control input-sm" placeholder="N° Documento" /></th>
+												</tr>
+												<tr>
+													<th>Usuario</th>
+													<th>Nombre</th>
+													<th>Apellido</th>
+													<th>Tipo de Documento</th>
+													<th>N° Documento</th>
+													<th>Opciones</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>
+
+
+								<!-- END COLUMN FILTER DATA TABLE -->
+
+			</div>
+		</div>
+		<!-- FIN OPCIONES -->
+
+<!-- MODAL INFORMATION UPDATE -->
+	<div class="widget-content">
+
+		<div class="modal fade" id="updatedata" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" data-size="modal-lg">
+				<div class="modal-content">
+					<form method="post" id="formu" name="formu">
+						<!-- HEADER -->
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" title="Cerrar" aria-hidden="true">&times;</button>
+							<h5 style="color: #3C3333;" class="modal-title" id="myModalLabel"></h5>
+						</div>
+						<!-- END HEADER -->
+						<input style="display: none;" id="id" name="id" type="text">
+						<!-- BODY -->
+						<div class="modal-body">
+								<div class="widget-content">
+
+								    <!-- DATOS DE USUARIO -->
+				<p><strong>DATOS DE USUARIO</strong></p>
+				<legend></legend>
+				<br>
+
+				<div class="row">
+
+					<div class="form-group col-sm-6">
+						<label class="col-md-3 control-label">Tipo Doc</label>
+						<div class="col-md-8">
+							<select class="form-control input-sm" name="tipo_documento" id="tipo_documento">
+								<option value="">SELECCIONE</option>
+								<?php foreach($this->tipo_documento  as $indice =>$value):?>
+								<option value="<?php echo $value[0] ?>"><?php echo $value[1] ?></option>
+								<?php  endforeach;?>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group col-sm-6">
+						<label for="ticket-nro" class="col-sm-3 control-label">Nro Doc</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control input-sm" id="documento"
+								name="documento" placeholder="Nro de Documento*">
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<label for="ticket-nombres" class="col-sm-3 control-label">Nombres</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control input-sm" id="nombres"
+								name="nombres" placeholder="Nombres">
+						</div>
+					</div>
+
+					<div class="form-group col-sm-6">
+						<label for="ticket-paterno" class="col-sm-3 control-label">Apellidos</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control input-sm" id="apellidos"
+								name="apellidos" placeholder="Apellidos">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="form-group col-sm-6">
+						<label for="ticket-nro" class="col-sm-3 control-label">Telefono 1</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control input-sm" id="telefono1"
+								name="telefono1" placeholder="Telefono 1">
+						</div>
+					</div>
+
+					<div class="form-group col-sm-6">
+						<label for="ticket-nro" class="col-sm-3 control-label">Telefono 2</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control input-sm" id="telefono2"
+								name="telefono2" placeholder="Telefono 2">
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<label for="ticket-nro" class="col-sm-3 control-label">Email</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control input-sm" id="email"
+								name="email" placeholder="Email">
+						</div>
+					</div>
+
+					<div class="form-group col-sm-6">
+						<label for="ticket-nro" class="col-sm-3 control-label">Direccion</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control input-sm" id="direccion"
+								name="direccion" placeholder="Dirección">
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		<!-- FIN DATOS DE USUARIO -->
+			<br>
+		<!-- CREACION DE USUARIO -->
+
+			<div class="widget-content">
+				<p><strong>CREACION DE USUARIO</strong></p>
+				<legend></legend>
+				<br>
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<label class="col-md-3 control-label">Tipo Usuario</label>
+						<div class="col-md-8">
+							<select class="form-control input-sm" name="tipo_usuarios" id="tipo_usuarios">
+								<option value="">SELECCIONE</option>
+								<?php foreach($this->tipo_usuario as $indice =>$value):?>
+								<option value="<?php echo $value[0] ?>"><?php echo $value[1] ?></option>
+								<?php  endforeach;?>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<label for="ticket-nro" class="col-sm-3 control-label">Usuario</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control input-sm" id="usuario"
+								name="usuario" placeholder="Nombre Usuario*" readonly=readonly>
+						</div>
+					</div>
+
+					<div class="form-group col-sm-6">
+						<label for="ticket-nro" class="col-sm-3 control-label">Password</label>
+						<div class="col-sm-8">
+							<input type="password" class="form-control input-sm" id="password"
+								name="password" placeholder="Password*">
+							<!-- <p class="help-block">Contrase&ntilde;a: <em id="ver_contra" name="ver_contra"></em></p> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<label for="ticket-nro" class="col-sm-3 control-label">Activo</label>
+						<div class="col-sm-8">
+							<label
+								class="control-inline fancy-checkbox"> <input type="checkbox" id="flg_activo" name="flg_activo"> <span></span>
+							</label>
+						</div>
+					</div>
+				</div>
+
+				</div>
+						</div>
+						<!-- END BODY -->
+
+						<!-- FOOTER -->
+						<div class="modal-footer">
+							<button type="button" id="btn_actualizar"
+								class="btn btn-default">
+								<i class="fa fa-check-circle"></i> Actualizar
+							</button>
+						</div>
+						<!-- END FOOTER -->
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- END MODAL INFORMATION UPDATE -->
+
+	<!-- /main-content -->
+</div>
+<!-- /main -->
+</div>
+<!-- /content-wrapper -->
+</div>
+<!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- END BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT -->
+</div>
+<!-- /wrapper -->

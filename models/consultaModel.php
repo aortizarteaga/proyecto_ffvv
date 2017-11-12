@@ -81,27 +81,6 @@ class consultaModel extends Model {
 		return $prod;
 	}
 
-/* 	public function getDepartamento(){
-		$sql = "SELECT coddpto, nombre FROM aai_base_ubigeo_inei WHERE codprov='00' AND coddist='000' ORDER BY 2";
-		$prod = $this->_db->prepare($sql);
-		$prod->execute();
-		return $prod;
-	}
-
-	public function getProvincias($departamento) {
-		$sql = "SELECT codprov, nombre FROM aai_base_ubigeo_inei WHERE coddpto='$departamento' and  codprov!='00' AND coddist='000' ORDER BY 2";
-		$prod = $this->_db->prepare($sql);
-		$prod->execute();
-		return $prod;
-	}
-
-	public function getDistrito($departamento, $provincia) {
-		$sql = "SELECT codprov, nombre FROM aai_base_ubigeo_inei WHERE coddpto='$departamento' and  codprov='$provincia' AND coddist!='000' ORDER BY 2";
-		$prod = $this->_db->prepare($sql);
-		$prod->execute();
-		return $prod;
-	} */
-
 	public function getModalidad($modalidad_venta){
 
 		$sql = "SELECT id_buzon_modalidad_venta,descripcion FROM a365_buzon_modalidad_venta  WHERE
@@ -135,14 +114,6 @@ class consultaModel extends Model {
 			VALUES(:nombres,:ap_paterno,:ap_materno,:nro_documento,:nro_referencia,:comentarios,:id_usr_registro,:ip_usr_registro,
 					:id_tipo_operacion,:id_tipo_documento,:id_modalidad_venta,:fecha_nacimiento)";
 
-		/* $sql = "INSERT INTO a365_buzon_consulta(nombres,ap_paterno,ap_materno,nro_documento,nro_referencia,comentarios,
-			id_usr_registro,ip_usr_registro,id_tipo_operacion,id_tipo_documento,id_modalidad_venta,fecha_nacimiento)
-			VALUES($nombre,$apellidopat,$apellidomat,$documento,$contacto,$observaciones,$iduser,$ip_usr,
-					$tipo_operacion,$tipo_documento,$modalidad,$nacimiento)";
-
-			echo $sql;
-			exit; */
-
 		$prod = $this->_db->prepare($sql);
 
 		$prod->execute(array(':nombres'=> $nombre,':ap_paterno'=> $apellidopat,':ap_materno'=> $apellidomat,':nro_documento'=> $documento,
@@ -175,9 +146,6 @@ class consultaModel extends Model {
 	 			VALUES(:idbuzon,:idcampania,:idplazo,:idfamilia,:idplan,:idproducto,:idtipoconsumo,:cuota,
 	 			:telefono,:idmodalidad_ope,:idoperador,:id_usr_registro,:ip_usr_registro)";
 
-	 	/*$sql = "INSERT INTO a365_buzon_consultaxplan(id_buzon_consulta,id_campania,id_tipo_plazo,id_tipo_familia,id_tipo_plan,id_producto,id_tipo_consumo,cuota,
-				telefono,modalidad,id_operador,id_usr_registro,ip_usr_registro) VALUES($id_ult,$idcampania,$idplazo,$idfamilia,
-	 	$idplan,$idproducto,$idtipoconsumo,$cuota,$telefono,'$idmodalidad_ope',$idoperador,'$iduser','$ip_usr')";*/
 
 	 	$prod = $this->_db->prepare($sql);
 
@@ -227,10 +195,6 @@ class consultaModel extends Model {
 		$sql = "INSERT INTO a365_buzon_archivos(id_buzon_consulta,nombre_archivo,mime,usr_registro,ip_usr_registro)
 				VALUES(:idbuzon,:nombre_archivo,:mime,:id_usr_registro,:ip_usr_registro)";
 
-		/* $sql = "INSERT INTO a365_buzon_archivos(id_buzon_consulta,nombre_archivo,mime,archivo,usr_registro,ip_usr_registro)
-				VALUES($id_ult,'$nombreArchivo','$mime','$iduser','$ip_usr')";
-		echo $sql;
-		exit;  */
 
 		$prod = $this->_db->prepare($sql);
 

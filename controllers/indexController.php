@@ -9,14 +9,9 @@ class indexController extends Controller{
 	public function index(){
 		$this->_view->setJs(array('index'));
 		$this->_view->renderizar('index',true);
-
 	}
 
 	public function login(){
-		/* $user = 'aortiz';
-		$objModel=$this->loadModel('usuario');
-		$_SESSION['menu'] = $objModel->getMenu($user);
-		print_r($_SESSION['menu']); */
 		$user = trim($_POST['user']);
 		$pass = sha1(trim($_POST['pass']));
 

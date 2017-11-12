@@ -134,11 +134,20 @@
 										</div>
 
 										<div class="row">
-											<div style="display: none;" id="boton_busqueda" class="form-group col-sm-6">
+											<div style="display: none;" id="boton_busqueda" class="form-group col-sm-2 col-sm-offset-2">
 												<label for="ticket-clave" class="col-sm-2 control-label"></label>
 												<div class="col-sm-10 col-sm-offset-10">
 													<button type="button" id="btn_buscar" class="btn btn-primary">
 														<i class="fa fa-check-circle"></i> Buscar
+													</button>
+												</div>
+											</div>
+
+											<div style="display: none;" id="boton_reporte" class="form-group col-sm-2">
+												<label for="ticket-clave" class="col-sm-2 control-label"></label>
+												<div class="col-sm-10 col-sm-offset-10">
+													<button type="button" id="btn_reporte" class="btn btn-success">
+														<i class="fa fa-check-circle"></i> Reporte
 													</button>
 												</div>
 											</div>
@@ -155,7 +164,7 @@
 				</h3>
 			</div>
 
-							<div class="widget-content">
+							<div class="widget-content" id="tabla_busqueda">
 								<table style="width: 100%" width="100%" id="listado_servicios" name="listado_servicios" class="table table-sorting table-hover  table-bordered datatable">
 									<thead>
 										<tr>
@@ -184,6 +193,33 @@
 									</tbody>
 								</table>
 							</div>
+
+							<div class="widget-content" id="tabla_reporte">
+								<table width="100%" id="listado_servicios2" name="listado_servicios2" class="table table-sorting table-striped table-hover table-bordered datatable">
+										<thead>
+											<tr>
+												<th>Identificador</th>
+												<th>Tipo Operacion</th>
+												<th style="display: none;">Modalidad</th>
+												<th>Documento Vendedor</th>
+												<th>Vendedor</th>
+												<th>Documento Cliente</th>
+												<th>Nombre Cliente</th>
+												<th style="display: none;">precio</th>
+												<th style="display: none;">sec</th>
+												<th style="display: none;">fecha sec</th>
+												<th>Nro Referencia</th>
+												<th>Estado</th>
+												<th>Motivo</th>
+												<th>Fecha Registro</th>
+												<th style="display: none;">Fecha Cierre</th>
+												<th style="display: none;">Usuario Ultimo Movmiento</th>
+											</tr>
+										</thead>
+										<tbody>
+										</tbody>
+									</table>
+								</div>
 
 
 		</div>
@@ -464,6 +500,74 @@
 
 	</div>
 	<!-- END MODAL ADD BITACORA -->
+
+	<div class="widget-content">
+
+		<div class="modal fade" id="asignamiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" data-size="modal-lg">
+				<div class="modal-content">
+					<form method="post" id="formu_asig" name="formu_asig">
+						<!-- HEADER -->
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" title="Cerrar" aria-hidden="true">&times;</button>
+							<h5 style="color: red;" class="modal-title" id="label_bita"></h5>
+						</div>
+						<!-- END HEADER -->
+
+						<!-- BODY -->
+						<div class="modal-body">
+							<div class="widget">
+								<div class="widget-header">
+									<h3>
+										<i class="fa fa-edit"></i> Asignacion de Asesores
+									</h3>
+								</div>
+
+								<div class="widget-content">
+									<input style="display: none;" type="text" class="form-control input-sm" id="id_consulta_2" name="id_consulta_2">
+
+									<div class="row">
+										<input type="hidden" name="idbuzon" id="idbuzon"/>
+										<div class="form-group col-sm-6">
+											<label for="ticket-paterno" class="col-sm-4 control-label">Estado Consulta</label>
+											<div class="col-sm-8">
+												<select class="form-control input-sm" name="idusuario" id="idusuario">
+													<option value="" selected disabled >SELECCIONE</option>
+													<?php foreach($this->usuarios  as $indice =>$value):?>
+													<option value="<?php echo $value[0] ?>"><?php echo $value[1] ?></option>
+													<?php  endforeach;?>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<!-- END BODY -->
+
+						<!-- FOOTER -->
+						<div class="modal-footer">
+							<button type="button" id="btn_registrar_asignamiento"
+								class="btn btn-danger">
+								<i class="fa fa-check-circle"></i> Asignar
+							</button>
+						</div>
+						<!-- END FOOTER -->
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- END MODAL REASIGNAMIENTO -->
+
+
+
+
+
 
 	<!-- /main-content -->
 </div>

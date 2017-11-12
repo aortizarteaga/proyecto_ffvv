@@ -13,6 +13,7 @@
 
 	<!-- CSS -->
 	<link href="<?php echo BASE_URL ?>public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo BASE_URL ?>public/assets/css/jquery-ui.css" rel="stylesheet" type="text/css">
 
 	<link href="<?php echo BASE_URL ?>public/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo BASE_URL ?>public/assets/css/main.css" rel="stylesheet" type="text/css">
@@ -20,8 +21,10 @@
 	<!--<link href="<?php echo BASE_URL ?>public/assets/css/skins/red.css" rel="stylesheet" type="text/css">-->
 
 
+
 	<!-- Javascript -->
 	<script src="<?php echo BASE_URL ?>public/assets/js/jquery/jquery-2.1.0.min.js"></script>
+	<script src="<?php echo BASE_URL ?>public/assets/js/jquery-ui/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/bootstrap/bootstrap.min.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
 	<script src="<?php echo BASE_URL ?>public/assets/js/king-common.js"></script>
@@ -63,6 +66,28 @@
 	<script src="<?php echo BASE_URL?>public/assets/js/datepicker/moment.js"></script>
 	<script src="<?php echo BASE_URL?>public/assets/js/datepicker/moment.min.js"></script>
 	<script src="<?php echo BASE_URL?>public/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+	<!-- DATA TABLES -->
+	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/datatables/exts/dataTables.colVis.bootstrap.js"></script>
+	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/datatables/exts/dataTables.colReorder.min.js"></script>
+	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/datatables/exts/dataTables.tableTools.min.js"></script>
+	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/datatables/dataTables.bootstrap.js"></script>
+
+	<script src="<?php echo BASE_URL ?>public/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo BASE_URL ?>public/assets/js/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/buttons.bootstrap.min.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/jszip.min.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/vfs_fonts.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/buttons.print.min.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/responsive.bootstrap.min.js"></script>
+    <script src="<?php echo BASE_URL?>public/assets/js/plugins/datatables/dataTables.scroller.min.js"></script>
+
 
 	<!-- <script src="assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script> -->
 
@@ -183,11 +208,7 @@
 							<?php if (isset($_SESSION['menu']['MENU_REGISTRO'])):?>
 								<li>
 									<a href="#" class="js-sub-menu-toggle">
-<<<<<<< HEAD
 										<i class="fa fa-user-plus"></i><span class="text">Gestión Usuario</span>
-=======
-										<i class="fa fa-user-plus fa-fw"></i><span class="text">Registro Usuario</span>
->>>>>>> 0910eb6d203cecbf38b2344b9b24ab792a132b82
 										<i class="toggle-icon fa fa-angle-left"></i>
 									</a>
 									<ul class="sub-menu ">

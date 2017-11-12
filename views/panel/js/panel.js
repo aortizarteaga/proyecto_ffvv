@@ -7,6 +7,92 @@ $(document).ready(function() {
 		window.location = "../consulta/"
 	})
 
+	$('#btn_reporte').click(function(){
+
+		tipo_usuario=$('#tipo_usuario').val()
+		fecha_inicio=$('#fechaini').val().trim()
+		fecha_fin=$('#fechafin').val().trim()
+		criterios_busqueda=$('#criterios').val().trim()
+
+		if(tipo_usuario=='ADMINISTRADOR' || tipo_usuario=='SUPERVISOR'){
+			bitacora="cursor: pointer;display:inline;color: blue; font-size:20px"
+			actualizacion="cursor: pointer;display:inline;color: red;font-size:20px"
+			reasignamiento="cursor: pointer;display:inline;color: gray;font-size:20px"
+			tipo_usuario_vista=true
+			reporte="Bfrtip"
+		}
+		$('#tabla_reporte').css('display','block')
+		$('#tabla_busqueda').css('display','none')
+
+		$('#listado_servicios2').dataTable().fnDestroy();
+		$('#listado_servicios2').DataTable( {
+			   "order": [[ 0, "desc" ]],
+			   "scrollX": true,
+			   "ajax": {
+	  	        	"url":'../panel/getConsultasCriterio2/'+tipo_usuario,
+	  	        	"type": 'POST',
+	  	            "data": {
+	  	            	criterio: criterio,
+	  	            	fecha_inicio: fecha_inicio,
+	  	            	fecha_fin: fecha_fin,
+	  	            	criterios_busqueda: criterios_busqueda
+	  	            }
+	  	        },
+	  	      dom: reporte,
+			   buttons: [ {
+			    extend: "excel",
+			    className: "btn btn-success btn-xs"
+			   }],
+				//  buttons: ['copy','pdf','excel','print','csv'],
+			   responsive: !0,
+		        "columns": [
+		                    { "data": "id_buzon_consulta"},
+		                    { "data": "tipo_operacion" },
+		                    { "data": "modalidad" },
+		                    { "data": "dni" },
+		                    { "data": "vendedor" },
+		                    { "data": "nro_documento" },
+		                    { "data": "nombres_cliente" },
+		                    { "data": "precio" },
+		                    { "data": "sec" },
+		                    { "data": "fecha_sec" },
+		                    { "data": "nro_referencia" },
+		                    { "data": "estado" },
+		                    { "data": "motivo" },
+		                    { "data": "fecha_registro"},
+		                    { "data": "fecha_cierre"},
+		                    { "data": "usuario_cierre"}
+		                   ],
+		         "columnDefs": [
+											{
+											    "targets": [ 2 ],
+											    "visible": false
+											},
+		                                   {
+		                                       "targets": [ 7 ],
+		                                       "visible": false
+		                                   },
+		                                   {
+		                                       "targets": [ 8 ],
+		                                       "visible": false
+		                                   },
+		                                   {
+		                                       "targets": [ 9 ],
+		                                       "visible": false
+		                                   },
+		                                   {
+		                                       "targets": [ 14 ],
+		                                       "visible": false
+		                                   },
+		                                   {
+		                                       "targets": [ 15 ],
+		                                       "visible": false
+		                                   }
+		                       ]
+		    } );
+		})
+
+
 	$('#btn_buscar').click(function(){
 
 		var bitacora;
@@ -166,6 +252,8 @@ $(document).ready(function() {
 			reasignamiento="cursor: pointer;display:none;color: gray;font-size:20px"
 			tipo_usuario_vista=true
 		}
+
+		$('#tabla_reporte').css('display','none')
 
 		$('#listado_servicios').dataTable().fnDestroy();
 		$('#listado_servicios').DataTable( {
@@ -687,41 +775,60 @@ $(document).ready(function() {
 			$('#fechas').css('display','inline')
 			$('#criterio_busqueda').css('display','none')
 			$('#boton_busqueda').css('display','inline')
+			if(tipo_usuario=='ADMINISTRADOR' || tipo_usuario=='SUPERVISOR'){
+				$('#boton_reporte').css('display','inline')
+			}
 		}
 		else if(criterio==1){
 			$('#fechas').css('display','none')
 			$('#criterio_busqueda').css('display','block')
 			$('#boton_busqueda').css('display','inline')
+			if(tipo_usuario=='ADMINISTRADOR' || tipo_usuario=='SUPERVISOR'){
+				$('#boton_reporte').css('display','inline')
+			}
 		}
 		else if(criterio==2){
 			$('#fechas').css('display','none')
 			$('#criterio_busqueda').css('display','block')
 			$('#boton_busqueda').css('display','inline')
+			if(tipo_usuario=='ADMINISTRADOR' || tipo_usuario=='SUPERVISOR'){
+				$('#boton_reporte').css('display','inline')
+			}
 		}
 		else if(criterio==3){
 			$('#fechas').css('display','none')
 			$('#criterio_busqueda').css('display','block')
 			$('#boton_busqueda').css('display','inline')
+			if(tipo_usuario=='ADMINISTRADOR' || tipo_usuario=='SUPERVISOR'){
+				$('#boton_reporte').css('display','inline')
+			}
 		}
 		else if(criterio==4){
 			$('#fechas').css('display','none')
 			$('#criterio_busqueda').css('display','block')
 			$('#boton_busqueda').css('display','inline')
+			if(tipo_usuario=='ADMINISTRADOR' || tipo_usuario=='SUPERVISOR'){
+				$('#boton_reporte').css('display','inline')
+			}
 		}
 		else{
 			$('#fechas').css('display','none')
 			$('#criterio_busqueda').css('display','none')
 			$('#boton_busqueda').css('display','none')
+			$('#boton_reporte').css('display','none')
 		}
 
 	})
 
 
 	$("#listado_servicios tbody").on('click','a.reasignar',function(){
-		idbuzon = $(this).attr("id");
-		iduser = $('#usuario_rea').val()
-		ipuser = $('#ip_rea').val()
+		var idbuzon = $(this).attr("id");
+		$('#idbuzon').val(idbuzon);
+		$('#asignamiento').modal();
+		//iduser = $('#usuario_rea').val()
+		//ipuser = $('#ip_rea').val()
 
+		/*
 		$.confirm({
 		    title: 'Reasignar',
 		    content: '¿Desea reasignar el registro '+idbuzon +' ?',
@@ -763,7 +870,32 @@ $(document).ready(function() {
 
 		    }
 		});
-	})
+		*/
+	});
+
+	$('#btn_registrar_asignamiento').click(function(){
+
+			var idbuzon = $('#idbuzon').val();
+			var idusuario = $('#idusuario').val();
+
+			if(idusuario){
+
+				$.post('../panel/asignamiento',{
+					idbuzon : idbuzon,
+					idusuario : idusuario
+				},function(data){
+					if(data){
+						alert('Se asigno correctamente al asesor');
+					}else{
+						alert('Ocurrio un Error. Consulte a sistemas');
+					}
+				});
+
+			}else{
+				alert('seleccione asesor');
+			}
+
+	});
 
 	$('#pdf_ver').click(function(){
 		idbuzon = $('#id_consulta').val()
